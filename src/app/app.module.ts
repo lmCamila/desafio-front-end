@@ -4,16 +4,19 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { DemoMaterialModule } from './material-module';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     DemoMaterialModule
   ],
+  entryComponents: [MenuComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
