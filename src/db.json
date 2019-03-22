@@ -1,0 +1,81 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "json-server",
+      "email": "typicode",
+      "avatar": "link"
+    }
+  ],
+  "plans": [
+    {
+      "id": 1,
+      "name": "some comment",
+      "status": "Aguardando inicio",
+      "idType": 1,
+      "idAccountable": 1,
+      "start": "22/03/2019",
+      "end": "25/03/2019",
+      "idBelongsTo": 0,
+      "description": "la bla blaart",
+      "interstedPeople": [
+        {
+          "id": 1
+        },
+        {
+          "id": 2
+        }
+      ],
+      "costs": 250.25
+    },
+    {
+      "name": "Projeto teste insomnia",
+      "status": "Aguardando inicio",
+      "email": "teste.testeteste@teste.com",
+      "idType": 1,
+      "idAccountable": 1,
+      "start": "22/03/2018",
+      "end": "22/04/2019",
+      "idBelongsTo": 1,
+      "description": "999999999",
+      "interestedPeople": [
+        {
+          "id": 1
+        },
+        {
+          "id": 3
+        }
+      ],
+      "costs": 250.35,
+      "id": 2
+    },
+    {
+      "name": "Projeto teste insomnia",
+      "status": "Aguardando inicio",
+      "email": "teste.testeteste@teste.com",
+      "idType": 1,
+      "idAccountable": 1,
+      "start": "22/03/2018",
+      "end": "22/04/2019",
+      "idBelongsTo": 1,
+      "description": "999999999",
+      "interestedPeople": [
+        {
+          "id": 1
+        },
+        {
+          "id": 3
+        }
+      ],
+      "costs": 250.35,
+      "id": 3
+    }
+  ],
+  "types": [
+    {
+      "id": 1,
+      "name": "Nome Tipo",
+      "description": "bla bla bla"
+    }
+  ]
+}

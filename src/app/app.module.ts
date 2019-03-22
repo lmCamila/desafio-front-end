@@ -1,22 +1,21 @@
-import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { DemoMaterialModule } from './material-module';
-import { MenuComponent } from './menu/menu.component';
+import { MenuModule } from './menu/menu.module';
+import { PlansModule } from './plans/plans.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    DemoMaterialModule
+    MenuModule,
+    PlansModule
   ],
-  entryComponents: [MenuComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

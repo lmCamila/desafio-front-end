@@ -1,4 +1,4 @@
-.example-container {
+.menu-container {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -8,22 +8,35 @@
     right: 0;
   }
   
-  .example-is-mobile .example-toolbar {
+  .menu-is-mobile .menu-toolbar {
     position: fixed;
+    height: 7% !important;
+    z-index: 2;
+  }
+
+  .menu-toolbar {
+    position: fixed;
+    height: 7% !important;
     z-index: 2;
   }
   
-  h1.example-app-name {
+  h1.menu-app-name {
     margin-left: 8px;
   }
   
-  .example-sidenav-container {
+  .menu-sidenav-container {
     flex: 1;
+    background-color: #E6E6E6 !important;
     width: 250px;
   }
   
-  .example-is-mobile .example-sidenav-container {
+  .menu-is-mobile .menu-sidenav-container {
     flex: 1 0 auto;
+    width: 250px;
+  }
+  .menu-sidenav-container {
+    flex: 1 0 auto;
+    margin-top:4% !important;
     width: 250px;
   }
   
