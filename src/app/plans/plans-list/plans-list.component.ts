@@ -1,26 +1,33 @@
-import { ApiService } from '../shared/api.service';
-import { Component, OnInit } from '@angular/core';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { PlansService } from './../shared/plans.service';
+import { PlansDragAndDropService } from './../shared/plans-drag-and-drop.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PlanModel } from '../shared/plan-model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-plans-list',
   templateUrl: './plans-list.component.html',
   styleUrls: ['./plans-list.component.css']
 })
-export class PlansListComponent implements OnInit {
+export class PlansListComponent implements OnInit, OnDestroy {
 
-  plans;
-  constructor(private api: ApiService) { }
+  plans: PlanModel[];
+  subPlans: PlanModel[] = [];
+
+  plansListSubscribe: Subscription;
+
+  constructor(private plansService: PlansService,
+              public plansDragAndDrop: PlansDragAndDropService) { }
 
   ngOnInit() {
-    this.api.getPlans().subscribe(dados => {
-      this.plans = dados;
+    this.plansService.getForList();
+
+    this.plansListSubscribe = this.plansService.plansListEvent.subscribe( data => {
+      this.plans = data;
     });
   }
-  // {name: string, status: string, data: string, user: string, email: string, avatar: string, interestedPeople: number[]}
-  drop(event: CdkDragDrop<PlanModel[]>) {
-    moveItemInArray(this.plans, event.previousIndex, event.currentIndex);
-  }
 
+  ngOnDestroy() {
+    this.plansListSubscribe.unsubscribe();
+  }
 }

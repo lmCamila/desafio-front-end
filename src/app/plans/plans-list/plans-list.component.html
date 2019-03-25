@@ -1,12 +1,13 @@
 <mat-card class="card-list-plans">
   <mat-card-header>
-    <mat-card-title style="padding: 50% 50% 25% 25% ;font-size: 20pt;">Planos</mat-card-title>
+    <mat-card-title style="padding: 30% 30% 15% 15% ;font-size: 20pt;">Planos</mat-card-title>
   </mat-card-header>
+  <app-plans-add-button></app-plans-add-button>
   <mat-divider></mat-divider>
-  <mat-card-content >
-    <div  cdkDropList (cdkDropListDropped)="drop($event)" class="list">
+  <mat-card-content style="margin-top: 4%">
+    <div cdkDropList  [cdkDropListData]="plans" (cdkDropListDropped)="plansDragAndDrop.drop($event)" class="list">
       <div *ngFor="let p of plans" cdkDrag class="box">
-        <app-plans   [plan] = p></app-plans>
+        <app-plans [plan]=p></app-plans>
       </div>
     </div>
   </mat-card-content>
