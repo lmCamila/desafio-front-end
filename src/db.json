@@ -2,10 +2,95 @@
   "users": [
     {
       "id": 1,
-      "name": "json-server",
-      "email": "typicode",
-      "avatar": "link"
+      "name": "Isobel Hazel",
+      "email": "Annabell.Walsh@gmail.com",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/jakemoore/128.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Parker Anissa",
+      "email": "Drake_Leuschke68@yahoo.com",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/kiwiupover/128.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Khalid Garrick",
+      "email": "Jermaine_Lueilwitz@gmail.com",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/jordyvdboom/128.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Joesph Santina",
+      "email": "Antwan_Lubowitz@hotmail.com",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/mhesslow/128.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Sanford Carlie",
+      "email": "Shany.Ruecker6@gmail.com",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/_kkga/128.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Estrella Anahi",
+      "email": "Alison_Rohan@gmail.com",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/mhudobivnik/128.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Malika Ewald",
+      "email": "Lou.Auer4@hotmail.com",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/herbigt/128.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Karen Fred",
+      "email": "Abbigail_Wiza68@yahoo.com",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/beweinreich/128.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Raina Elna",
+      "email": "Justina.Romaguera@yahoo.com",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/ssiskind/128.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Major Lessie",
+      "email": "Arno_Heidenreich1@gmail.com",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/danro/128.jpg"
+    },
+    {
+      "id": 11,
+      "name": "Mathew Aurelie",
+      "email": "Merlin.Leffler@yahoo.com",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/jarsen/128.jpg"
+    },
+    {
+      "id": 12,
+      "name": "Priscilla Cheyanne",
+      "email": "Rosalinda.Brekke@yahoo.com",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/juaumlol/128.jpg"
+    },
+    {
+      "id": 13,
+      "name": "Jonathan Ansley",
+      "email": "Dimitri65@gmail.com",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/davidmerrique/128.jpg"
+    },
+    {
+      "id": 14,
+      "name": "Karlee Celine",
+      "email": "Armani21@yahoo.com",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/derienzo777/128.jpg"
+    },
+    {
+      "id": 15,
+      "name": "Nakia Julius",
+      "email": "Lurline14@hotmail.com",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/jayrobinson/128.jpg"
     }
+
   ],
   "plans": [
     {
@@ -31,7 +116,6 @@
     {
       "name": "Projeto teste insomnia",
       "status": "Aguardando inicio",
-      "email": "teste.testeteste@teste.com",
       "idType": 1,
       "idAccountable": 1,
       "start": "22/03/2018",
@@ -52,7 +136,6 @@
     {
       "name": "Projeto teste insomnia",
       "status": "Aguardando inicio",
-      "email": "teste.testeteste@teste.com",
       "idType": 1,
       "idAccountable": 1,
       "start": "22/03/2018",
@@ -73,7 +156,6 @@
     {
       "name": "Projeto teste 3",
       "status": "Aguardando inicio",
-      "email": "teste.testeteste@teste.com",
       "idType": 1,
       "idAccountable": 1,
       "start": "22/03/2018",
@@ -94,7 +176,6 @@
     {
       "name": "Projeto teste null",
       "status": "Aguardando inicio",
-      "email": "teste.testeteste@teste.com",
       "idType": 1,
       "idAccountable": 1,
       "start": "22/03/2018",
@@ -116,8 +197,28 @@
   "types": [
     {
       "id": 1,
-      "name": "Nome Tipo",
-      "description": "bla bla bla"
+      "name": "Plano Estratégico",
+      "description": "Plano estratégico"
+    },
+    {
+      "id": 2,
+      "name": "Plano de Crescimento/ Expanção",
+      "description": "Plano de Crescimento"
+    },
+    {
+      "id": 3,
+      "name": "Plano de Reestruturação",
+      "description": "Plano de Reestruturação"
+    },
+    {
+      "id": 4,
+      "name": "Plano Interno",
+      "description": "Plano Interno"
+    },
+    {
+      "id": 5,
+      "name": "Plano Operacional",
+      "description": "Plano Operacional"
     }
   ]
 }

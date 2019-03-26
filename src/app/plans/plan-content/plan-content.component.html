@@ -10,6 +10,19 @@
       <p>email@email.com</p>
     </div>
     <img src="https://res.cloudinary.com/dereqydhf/image/upload/v1552890854/ir9vafcarj78jg3gyohm.jpg" />
-    <mat-icon>more_vert</mat-icon>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item><mat-icon>edit</mat-icon>Editar</button>
+        <button mat-menu-item [matMenuTriggerFor]="status">Mudar status</button>
+        <button mat-menu-item><mat-icon>delete</mat-icon>Remover</button>
+      </mat-menu>
+      <mat-menu #status="matMenu">
+        <button mat-menu-item><mat-icon>play_arrow</mat-icon>Iniciar</button>
+        <button mat-menu-item><mat-icon>done</mat-icon>Concluir</button>
+        <button mat-menu-item><mat-icon>pause</mat-icon>Suspender</button>
+        <button mat-menu-item><mat-icon>cancel</mat-icon>Cancelar</button>
+      </mat-menu>
   </div>
 </div>

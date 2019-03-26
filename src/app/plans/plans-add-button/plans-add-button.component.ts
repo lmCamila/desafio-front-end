@@ -1,4 +1,6 @@
+import { PlansFormComponent } from './../plans-form/plans-form.component';
 import { Component, OnInit } from '@angular/core';
+import { MatBottomSheet } from '@angular/material';
 
 @Component({
   selector: 'app-plans-add-button',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlansAddButtonComponent implements OnInit {
 
-  constructor() { }
+  constructor(private bottomSheet: MatBottomSheet) { }
 
   ngOnInit() {
+  }
+
+  openFormNew() {
+    this.bottomSheet.open(PlansFormComponent);
   }
 
 }
