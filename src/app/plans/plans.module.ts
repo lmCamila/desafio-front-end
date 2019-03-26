@@ -8,13 +8,15 @@ import { PlansComponent } from './plans/plans.component';
 import { PlansListComponent } from './plans-list/plans-list.component';
 import { PlansAddButtonComponent } from './plans-add-button/plans-add-button.component';
 import { PlanContentComponent } from './plan-content/plan-content.component';
+import { PlansFormComponent } from './plans-form/plans-form.component';
 
 @NgModule({
   declarations: [
     PlansComponent,
     PlansListComponent,
     PlansAddButtonComponent,
-    PlanContentComponent
+    PlanContentComponent,
+    PlansFormComponent
   ],
   imports: [
     CommonModule,

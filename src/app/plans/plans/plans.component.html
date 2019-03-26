@@ -1,4 +1,4 @@
-<div *ngIf="subPlans === null || subPlans.length === 0" >
+<div *ngIf="subPlans === null || subPlans.length === 0">
   <div>
     <div style="width:100%">
       <app-plan-content [plan]=plan></app-plan-content>
@@ -6,7 +6,17 @@
   </div>
 </div>
 
-<div >
+<div>
+  <mat-tree>
+    <!-- <mat-nested-tree-node>
+      <app-plan-content [plan]=plan></app-plan-content>
+      <div cdkDropList class="list" [cdkDropListData]="subPlans" (cdkDropListDropped)="plansDragAndDrop.drop($event)">
+        <mat-nested-tree-node cdkDrag *ngFor="let p of subPlans">
+          <app-plan-content [plan]=p></app-plan-content>
+        </mat-nested-tree-node>
+      </div>
+    </mat-nested-tree-node>
+  </mat-tree> -->
   <mat-accordion *ngIf="subPlans.length != 0">
     <mat-expansion-panel style="width:97% !important; height: 100%; padding: 2%">
       <mat-expansion-panel-header style="max-width: 90% !important;padding: 2%">
