@@ -49,12 +49,12 @@
 
         <!-- input de pertence a algum plano -->
         <mat-form-field style="width: 100%">
-            <input matInput #plan placeholder="Pertence ao plano" [matAutocomplete]="auto"
+            <input matInput #plan placeholder="Pertence ao plano" [matAutocomplete]="autoPlan"
               (keyup)=" filterPlans($event)">
             <button mat-button *ngIf="plan.value" matSuffix mat-icon-button aria-label="Clear" (click)="plan.value=''">
               <mat-icon>close</mat-icon>
             </button>
-            <mat-autocomplete matAutoComplete #auto>
+            <mat-autocomplete matAutoComplete #autoPlan>
               <mat-option *ngFor="let plan of plans" [value]="plan.name">{{ plan.name }}</mat-option>
             </mat-autocomplete>
           </mat-form-field>
