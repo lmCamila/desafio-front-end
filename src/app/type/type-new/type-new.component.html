@@ -1,0 +1,21 @@
+<div style="display: flex; flex-direction:column">
+  <form [formGroup]="formType">
+    <div style="display:inline">
+      <button mat-icon-button matTooltip="Cancelar" style="position:relative; float:left">
+        <mat-icon>close</mat-icon>
+      </button>
+      <h1 style="position:relative; float:left; margin-top:-1%">Cadastro Tipo</h1>
+    </div>
+    <div>
+      <button mat-icon-button matTooltip="Confirmar" style="position:relative; float:right">
+        <mat-icon>done</mat-icon>
+      </button>
+    </div>
+    <mat-form-field style="width:100%">
+      <input matInput formControlName="name" placeholder="Nome">
+    </mat-form-field>
+    <mat-form-field style="width:100%">
+      <textarea matInput formControlName="description" placeholder="Descrição"></textarea>
+    </mat-form-field>
+  </form>
+</div>

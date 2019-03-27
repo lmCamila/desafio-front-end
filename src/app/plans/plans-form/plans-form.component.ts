@@ -4,6 +4,8 @@ import { TypeModel } from './../shared/type-model';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { UserModel } from '../shared/user-model';
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { TypeNewComponent } from 'src/app/type/type-new/type-new.component';
 
 @Component({
   selector: 'app-plans-form',
@@ -18,9 +20,11 @@ export class PlansFormComponent implements OnInit {
   allUsers: UserModel[];
   plans: PlanModel[];
   allPlans: PlanModel[];
+  dialogRef: MatDialogRef<TypeNewComponent>;
 
   constructor(private apiConnection: ApiService,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              public dialog: MatDialog) {
     this.formPlan = formBuilder.group({
       name : [null, [Validators.required, Validators.minLength(5)]],
       idType: [1, [Validators.required]],
@@ -63,6 +67,10 @@ export class PlansFormComponent implements OnInit {
 
   onSubmit() {
     console.log('submit');
+  }
+
+  openDialog() {
+    this.dialogRef = this.dialog.open(TypeNewComponent);
   }
 
 }

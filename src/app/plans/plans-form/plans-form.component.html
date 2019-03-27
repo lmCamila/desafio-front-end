@@ -1,6 +1,15 @@
-<div style="min-width:700px;padding-bottom: 60%; display: flex; flex-direction: column; ">
-  <h1>Cadastrar Plano</h1>
+<div style="min-width:500px;padding-bottom: 10%; display: flex; flex-direction: column; ">
+  
   <form [formGroup]="formPlan">
+    <div style="display:inline;">
+        <button mat-icon-button matTooltip="Cancelar" style="position:relative; float:left;">
+            <mat-icon>close</mat-icon>
+          </button>
+      <h1 style="position:relative; float:left;">Cadastrar Plano</h1>
+      <button mat-icon-button matTooltip="Confirmar" style="position:relative; float:right;">
+          <mat-icon>done</mat-icon>
+        </button>
+    </div>
     <mat-tab-group style="width:100%">
       <mat-tab label="GERAL">
 
@@ -13,15 +22,16 @@
         </div>
 
         <!-- input tipo de plano -->
-        <mat-form-field style="width: 95.5%;">
+        <mat-form-field style="width: 94%;">
           <mat-label>Tipo do plano</mat-label>
           <mat-select formControlName="idType">
             <mat-option *ngFor="let type of types" [value]="type.id">{{ type.name }}</mat-option>
           </mat-select>
         </mat-form-field>
-        <button mat-icon-button  matTooltip="Adicionar novo tipo.">
+        <button mat-icon-button  matTooltip="Adicionar novo tipo." (click)="openDialog()">
             <mat-icon style="color:darkgreen">add</mat-icon>
         </button>
+
         <!-- input responsável pelo plano -->
         <mat-form-field style="width: 100%">
           <input matInput #acountable placeholder="Responsável(quem?)" [matAutocomplete]="auto"

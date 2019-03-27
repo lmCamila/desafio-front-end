@@ -1,7 +1,9 @@
 <div class="menu-container" [class.menu-is-mobile]="mobileQuery.matches" >
-  <mat-toolbar color="primary" class="menu-toolbar">
-    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-    <!-- <img src="assets/images/logo.png"/> -->
+  <mat-toolbar class="menu-toolbar">
+    <button mat-icon-button (click)="snav.toggle()" style="color:white">
+      <mat-icon>menu</mat-icon>
+    </button>
+     <img src="assets/images/logo.png"/> 
   </mat-toolbar>
 
   <mat-sidenav-container class="menu-sidenav-container"
@@ -11,6 +13,7 @@
       <mat-nav-list style="width: 240px; margin-top:17%;padding-top:17% ;">
        <a class="selected-item" mat-list-item routerLink=".">Visão Geral</a>
         <a mat-list-item routerLink=".">Planos</a>
+        <a mat-list-item routerLink=".">Tipos de Planos</a>
       </mat-nav-list>
     </mat-sidenav> 
   </mat-sidenav-container>

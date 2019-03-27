@@ -1,3 +1,4 @@
+import { TypeModule } from './type/type.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -14,7 +15,8 @@ import { PlansModule } from './plans/plans.module';
     BrowserModule,
     BrowserAnimationsModule,
     MenuModule,
-    PlansModule
+    PlansModule,
+    TypeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
