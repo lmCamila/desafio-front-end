@@ -1,5 +1,5 @@
 import { PlanModel } from './../shared/plan-model';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, LOCALE_ID } from '@angular/core';
 
 @Component({
   selector: 'app-plan-content',
@@ -12,7 +12,7 @@ export class PlanContentComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
+
 
 }

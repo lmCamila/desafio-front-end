@@ -1,10 +1,11 @@
+import { PlansService } from './../shared/plans.service';
 import { PlanModel } from './../shared/plan-model';
-import { ApiService } from './../shared/api.service';
-import { TypeModel } from './../shared/type-model';
+import { ApiService } from '../../core/shared/api.service';
+import { TypeModel } from '../../type/shared/type-model';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserModel } from '../shared/user-model';
-import { MatDialog, MatDialogRef } from '@angular/material';
+import { MatDialog, MatDialogRef, MatBottomSheetRef } from '@angular/material';
 import { TypeNewComponent } from 'src/app/type/type-new/type-new.component';
 
 @Component({
@@ -24,7 +25,9 @@ export class PlansFormComponent implements OnInit {
 
   constructor(private apiConnection: ApiService,
               private formBuilder: FormBuilder,
-              public dialog: MatDialog) {
+              private bottomSheetRef: MatBottomSheetRef<PlansFormComponent>,
+              public dialog: MatDialog,
+              private planService: PlansService) {
     this.formPlan = formBuilder.group({
       name : [null, [Validators.required, Validators.minLength(5)]],
       idType: [1, [Validators.required]],
@@ -66,11 +69,27 @@ export class PlansFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('submit');
+    if (this.formPlan.valid) {
+      let valueSubmit = Object.assign({}, this.formPlan.value);
+      valueSubmit = Object.assign(valueSubmit, {
+        idAccountable: this.planService.getUserId(this.allUsers, this.formPlan.value.idAccountable),
+        start: String(this.formPlan.value.start),
+        end: String(this.formPlan.value.end),
+        status: 'Aguardando início',
+        idBelongsTo: this.formPlan.value.idBelongsTo == null ? 0 : this.formPlan.value.idBelongsTo
+      });
+      this.apiConnection.createPlan(valueSubmit).subscribe( status => console.log(status));
+      this.formPlan.reset();
+      this.bottomSheetRef.dismiss();
+    }
   }
 
   openDialog() {
     this.dialogRef = this.dialog.open(TypeNewComponent);
+  }
+
+  close() {
+    this.bottomSheetRef.dismiss();
   }
 
 }

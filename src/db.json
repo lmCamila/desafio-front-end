@@ -90,7 +90,6 @@
       "email": "Lurline14@hotmail.com",
       "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/jayrobinson/128.jpg"
     }
-
   ],
   "plans": [
     {
@@ -99,8 +98,8 @@
       "status": "Aguardando inicio",
       "idType": 1,
       "idAccountable": 1,
-      "start": "22/03/2019",
-      "end": "25/03/2019",
+      "start": "Wed Mar 27 2019 00:00:00 GMT-0300 (Horário Padrão de Brasília)",
+      "end": "Sat Mar 30 2019 00:00:00 GMT-0300 (Horário Padrão de Brasília)",
       "idBelongsTo": 0,
       "description": "la bla blaart",
       "interstedPeople": [
@@ -118,17 +117,14 @@
       "status": "Aguardando inicio",
       "idType": 1,
       "idAccountable": 1,
-      "start": "22/03/2018",
-      "end": "22/04/2019",
+      "start": "Wed Mar 27 2019 00:00:00 GMT-0300 (Horário Padrão de Brasília)",
+      "end": "Sat Mar 30 2019 00:00:00 GMT-0300 (Horário Padrão de Brasília)",
       "idBelongsTo": 1,
       "description": "999999999",
       "interestedPeople": [
-        {
-          "id": 1
-        },
-        {
-          "id": 3
-        }
+        3,
+        4,
+        5
       ],
       "costs": 250.35,
       "id": 2
@@ -138,60 +134,116 @@
       "status": "Aguardando inicio",
       "idType": 1,
       "idAccountable": 1,
-      "start": "22/03/2018",
-      "end": "22/04/2019",
+      "start": "Wed Mar 27 2019 00:00:00 GMT-0300 (Horário Padrão de Brasília)",
+      "end": "Sat Mar 30 2019 00:00:00 GMT-0300 (Horário Padrão de Brasília)",
       "idBelongsTo": 1,
       "description": "999999999",
       "interestedPeople": [
-        {
-          "id": 1
-        },
-        {
-          "id": 3
-        }
+        3,
+        4,
+        5
       ],
       "costs": 250.35,
       "id": 3
     },
     {
-      "name": "Projeto teste 3",
-      "status": "Aguardando inicio",
+      "name": "Plano teste criar 1",
       "idType": 1,
-      "idAccountable": 1,
-      "start": "22/03/2018",
-      "end": "22/04/2019",
-      "idBelongsTo": 0,
-      "description": "999999999",
-      "interestedPeople": [
-        {
-          "id": 1
-        },
-        {
-          "id": 3
-        }
-      ],
-      "costs": 250.35,
-      "id": 3
-    },
-    {
-      "name": "Projeto teste null",
-      "status": "Aguardando inicio",
-      "idType": 1,
-      "idAccountable": 1,
-      "start": "22/03/2018",
-      "end": "22/04/2019",
+      "idAccountable": 4,
+      "start": "Wed Mar 27 2019 00:00:00 GMT-0300 (Horário Padrão de Brasília)",
+      "end": "Sat Mar 30 2019 00:00:00 GMT-0300 (Horário Padrão de Brasília)",
       "idBelongsTo": null,
-      "description": "999999999",
+      "description": "detalhe teste plano 1",
       "interestedPeople": [
-        {
-          "id": 1
-        },
-        {
-          "id": 3
-        }
+        3,
+        4,
+        5
       ],
-      "costs": 250.35,
-      "id": 3
+      "costs": null,
+      "status": "Aguardando início",
+      "id": 4
+    },
+    {
+      "name": "Plano teste criar 1",
+      "idType": 1,
+      "idAccountable": 4,
+      "start": "Wed Mar 27 2019 00:00:00 GMT-0300 (Horário Padrão de Brasília)",
+      "end": "Sat Mar 30 2019 00:00:00 GMT-0300 (Horário Padrão de Brasília)",
+      "idBelongsTo": null,
+      "description": "detalhe teste plano 1",
+      "interestedPeople": [
+        3,
+        4,
+        5
+      ],
+      "costs": null,
+      "status": "Aguardando início",
+      "id": 5
+    },
+    {
+      "name": "Teste 2 ",
+      "idType": 1,
+      "idAccountable": 5,
+      "start": null,
+      "end": null,
+      "idBelongsTo": 0,
+      "description": "teste com id pertence ao projeto = 0",
+      "interestedPeople": null,
+      "costs": null,
+      "status": "Aguardando início",
+      "id": 6
+    },
+    {
+      "name": "Teste 2 ",
+      "idType": 1,
+      "idAccountable": 5,
+      "start": null,
+      "end": null,
+      "idBelongsTo": 0,
+      "description": "teste com id pertence ao projeto = 0",
+      "interestedPeople": null,
+      "costs": null,
+      "status": "Aguardando início",
+      "id": 7
+    },
+    {
+      "name": "Teste 3",
+      "idType": 1,
+      "idAccountable": 1,
+      "start": null,
+      "end": null,
+      "idBelongsTo": 0,
+      "description": null,
+      "interestedPeople": null,
+      "costs": null,
+      "status": "Aguardando início",
+      "id": 8
+    },
+    {
+      "name": "Teste 3",
+      "idType": 1,
+      "idAccountable": 1,
+      "start": null,
+      "end": null,
+      "idBelongsTo": 0,
+      "description": null,
+      "interestedPeople": null,
+      "costs": null,
+      "status": "Aguardando início",
+      "id": 9
+    },
+    {
+      "name": "Teste teste ",
+      "idType": 1,
+      "idAccountable": 4,
+      "start": "Fri Mar 29 2019 00:00:00 GMT-0300 (Horário Padrão de Brasília)",
+      "end": "Thu Mar 28 2019 00:00:00 GMT-0300 (Horário Padrão de Brasília)",
+      "idBelongsTo": 0,
+      "description": null,
+      "interestedPeople": null,
+      "costs": null,
+      "status": "Aguardando início",
+      "id": 10
     }
   ],
   "types": [

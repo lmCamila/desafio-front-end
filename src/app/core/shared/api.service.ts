@@ -1,17 +1,21 @@
-import { TypeModel } from './type-model';
+import { PlanModel } from './../../plans/shared/plan-model';
+import { TypeModel } from '../../type/shared/type-model';
 
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { take } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { PlanModel } from './plan-model';
-import { UserModel } from './user-model';
+import { UserModel } from '../../plans/shared/user-model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-
+  httpConf = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
   constructor(private httpCliente: HttpClient) { }
 
   getPlans() {
@@ -24,5 +28,12 @@ export class ApiService {
 
   getUsers() {
     return this.httpCliente.get<UserModel[]>(`${environment.apiUrl}/users`).pipe(take(1));
+  }
+
+  createPlan(plan) {
+    return this.httpCliente.post(`${environment.apiUrl}/plans`, plan, this.httpConf).pipe(take(1));
+  }
+  createType(type) {
+    return this.httpCliente.post(`${environment.apiUrl}/types`, type, this.httpConf).pipe(take(1));
   }
 }

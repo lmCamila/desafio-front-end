@@ -1,14 +1,14 @@
 <div style="min-width:500px;padding-bottom: 10%; display: flex; flex-direction: column; ">
-  
-  <form [formGroup]="formPlan">
+
+  <form [formGroup]="formPlan" (ngSubmit)="onSubmit()" >
     <div style="display:inline;">
-        <button mat-icon-button matTooltip="Cancelar" style="position:relative; float:left;">
-            <mat-icon>close</mat-icon>
-          </button>
+      <button mat-icon-button matTooltip="Cancelar" (click)="close()"  style="position:relative; float:left;">
+        <mat-icon>close</mat-icon>
+      </button>
       <h1 style="position:relative; float:left;">Cadastrar Plano</h1>
-      <button mat-icon-button matTooltip="Confirmar" style="position:relative; float:right;">
-          <mat-icon>done</mat-icon>
-        </button>
+      <button type="submit" mat-icon-button matTooltip="Confirmar" style="position:relative; float:right;">
+        <mat-icon>done</mat-icon>
+      </button>
     </div>
     <mat-tab-group style="width:100%">
       <mat-tab label="GERAL">
@@ -28,15 +28,16 @@
             <mat-option *ngFor="let type of types" [value]="type.id">{{ type.name }}</mat-option>
           </mat-select>
         </mat-form-field>
-        <button mat-icon-button  matTooltip="Adicionar novo tipo." (click)="openDialog()">
-            <mat-icon style="color:darkgreen">add</mat-icon>
+        <button mat-icon-button matTooltip="Adicionar novo tipo." (click)="openDialog()">
+          <mat-icon style="color:darkgreen">add</mat-icon>
         </button>
 
         <!-- input responsável pelo plano -->
         <mat-form-field style="width: 100%">
-          <input matInput #acountable placeholder="Responsável(quem?)" [matAutocomplete]="auto"
+          <input matInput #acountable placeholder="Responsável(quem?)" formControlName="idAccountable" [matAutocomplete]="auto"
             (keyup)="filterAccountable($event)">
-          <button mat-button *ngIf="acountable.value" matSuffix mat-icon-button aria-label="Clear" (click)="acountable.value=''">
+          <button mat-button *ngIf="acountable.value" matSuffix mat-icon-button aria-label="Clear"
+            (click)="acountable.value=''">
             <mat-icon>close</mat-icon>
           </button>
           <mat-autocomplete matAutoComplete #auto>
@@ -45,35 +46,35 @@
         </mat-form-field>
 
         <!-- input datas do plano -->
-          <mat-form-field>
-            <input matInput [matDatepicker]="start" placeholder="Início">
-            <mat-datepicker-toggle matSuffix [for]="start"></mat-datepicker-toggle>
-            <mat-datepicker #start></mat-datepicker>
-          </mat-form-field>
+        <mat-form-field>
+          <input matInput formControlName="start" [matDatepicker]="start" placeholder="Início">
+          <mat-datepicker-toggle matSuffix [for]="start"></mat-datepicker-toggle>
+          <mat-datepicker #start></mat-datepicker>
+        </mat-form-field>
 
-          <mat-form-field style="margin-left: 3%">
-            <input matInput [matDatepicker]="end" placeholder="Término">
-            <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
-            <mat-datepicker #end></mat-datepicker>
-          </mat-form-field>
+        <mat-form-field style="margin-left: 3%">
+          <input matInput formControlName="end" [matDatepicker]="end" placeholder="Término">
+          <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
+          <mat-datepicker #end></mat-datepicker>
+        </mat-form-field>
 
         <!-- input de pertence a algum plano -->
         <mat-form-field style="width: 100%">
-            <input matInput #plan placeholder="Pertence ao plano" [matAutocomplete]="autoPlan"
-              (keyup)=" filterPlans($event)">
-            <button mat-button *ngIf="plan.value" matSuffix mat-icon-button aria-label="Clear" (click)="plan.value=''">
-              <mat-icon>close</mat-icon>
-            </button>
-            <mat-autocomplete matAutoComplete #autoPlan>
-              <mat-option *ngFor="let plan of plans" [value]="plan.name">{{ plan.name }}</mat-option>
-            </mat-autocomplete>
-          </mat-form-field>
+          <input matInput #plan placeholder="Pertence ao plano" formControlName="idBelongsTo" [matAutocomplete]="autoPlan"
+            (keyup)=" filterPlans($event)">
+          <button mat-button *ngIf="plan.value" matSuffix mat-icon-button aria-label="Clear" (click)="plan.value=''">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-autocomplete matAutoComplete #autoPlan>
+            <mat-option *ngFor="let plan of plans" [value]="plan.name">{{ plan.name }}</mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
       </mat-tab>
       <mat-tab label="DETALHES">
 
         <!-- input de descrição do plano -->
         <mat-form-field style="width: 100%;">
-          <textarea #description matInput maxlength="1000" rows="3" placeholder="Descrição"
+          <textarea #description formControlName="description" matInput maxlength="1000" rows="3" placeholder="Descrição"
             style="height:100%"></textarea>
           <mat-hint align="end">{{description.value.length}} / 1000</mat-hint>
         </mat-form-field>
@@ -81,14 +82,19 @@
         <!-- input de pessoas interessadas no plano -->
         <mat-form-field style="width: 100%;">
           <mat-select placeholder="Pessoas interessadas" #interestedPeople formControlName="interestedPeople" multiple>
-            <mat-option *ngFor="let u of allUsers" [value]="u.name">{{u.name}}</mat-option>
+            <mat-select-trigger>
+                <span *ngIf="interestedPeople.value?.length >= 1" class="example-additional-selection">
+                    ({{interestedPeople.value.length}} {{interestedPeople.value?.length === 1 ? 'selecionado' : 'selecionados'}})
+                  </span>
+            </mat-select-trigger>
+            <mat-option *ngFor="let u of allUsers" [value]="u.id">{{u.name}}</mat-option>
           </mat-select>
         </mat-form-field>
-          
+
         <!-- input de custo estimado do plano -->
         <mat-form-field>
           <span matPrefix>R$ &nbsp;</span>
-          <input type="number" matInput placeholder="Custo estimado">
+          <input type="number" step=".01" formControlName="costs" matInput placeholder="Custo estimado">
         </mat-form-field>
       </mat-tab>
     </mat-tab-group>

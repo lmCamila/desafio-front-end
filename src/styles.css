@@ -2,15 +2,14 @@
 body{
     background-color: #E6E6E6;
 }
-.card-list-plans{
-    margin-top: 5%;
+.card-list{
+    margin-top: 10%;
     max-width: 50%;
     margin-left: 30%;
 }
 
 .list{
     width:100%;
-   
     display:block;
     border-radius:10px;
     background: white;
@@ -56,4 +55,10 @@ body{
 }
 .right p {
     margin: 0%;
+}
+
+.button-new{
+  background-color: rgb(58, 191, 214);
+  margin-bottom: -15%;
+  margin-left: 2%; 
 }

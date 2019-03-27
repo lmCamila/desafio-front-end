@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { TypeModel } from '../shared/type-model';
 
 @Component({
   selector: 'app-type',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TypeComponent implements OnInit {
 
+  @Input() type: TypeModel;
   constructor() { }
 
   ngOnInit() {

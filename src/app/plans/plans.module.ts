@@ -12,6 +12,10 @@ import { PlansFormComponent } from './plans-form/plans-form.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material';
 
+import { registerLocaleData } from '@angular/common';
+import ptBr from '@angular/common/locales/pt';
+registerLocaleData(ptBr);
+
 @NgModule({
   declarations: [
     PlansComponent,
@@ -34,7 +38,6 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material';
     PlansListComponent
   ],
   entryComponents: [PlansListComponent, PlansComponent, PlansFormComponent],
-  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
-  { provide: LOCALE_ID, useValue: 'pt-BR' }]
+  providers: [{ provide: LOCALE_ID, useValue: 'pt-PT' }]
 })
 export class PlansModule { }

@@ -1,7 +1,8 @@
-import { ApiService } from './api.service';
+import { ApiService } from '../../core/shared/api.service';
 import { Injectable, EventEmitter } from '@angular/core';
 
 import { PlanModel } from './plan-model';
+import { UserModel } from './user-model';
 @Injectable({
   providedIn: 'root'
 })
@@ -25,5 +26,10 @@ export class PlansService {
 
   getForComponent(idBelongsTo: number) {
     return this.plansList.filter(p => p.idBelongsTo === idBelongsTo );
+  }
+
+  getUserId(users: UserModel[], userName?: string) {
+    const user = users.filter(u => u.name === userName)[0];
+    return user.id;
   }
 }
