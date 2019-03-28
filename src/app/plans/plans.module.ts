@@ -1,19 +1,21 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
-import { DemoMaterialModule } from './../material-module';
-import { CommonModule } from '@angular/common';
-import { NgModule, LOCALE_ID } from '@angular/core';
 
-import { PlansComponent } from './plans/plans.component';
-import { PlansListComponent } from './plans-list/plans-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { LOCALE_ID, NgModule  } from '@angular/core';
+import { MatNativeDateModule } from '@angular/material';
+import ptBr from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+
+import { DemoMaterialModule } from './../material-module';
 import { PlansAddButtonComponent } from './plans-add-button/plans-add-button.component';
+import { PlansComponent } from './plans/plans.component';
 import { PlanContentComponent } from './plan-content/plan-content.component';
 import { PlansFormComponent } from './plans-form/plans-form.component';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material';
+import { PlansListComponent } from './plans-list/plans-list.component';
+import { PlanRoutingModule } from './plans.routing.module';
 
-import { registerLocaleData } from '@angular/common';
-import ptBr from '@angular/common/locales/pt';
 registerLocaleData(ptBr);
 
 @NgModule({
@@ -31,7 +33,8 @@ registerLocaleData(ptBr);
     HttpClientModule,
     ReactiveFormsModule,
     MatNativeDateModule,
-    FormsModule
+    FormsModule,
+    PlanRoutingModule
   ],
   exports: [
     PlansComponent,

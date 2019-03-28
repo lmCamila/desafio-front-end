@@ -7,6 +7,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserModel } from '../shared/user-model';
 import { MatDialog, MatDialogRef, MatBottomSheetRef } from '@angular/material';
 import { TypeNewComponent } from 'src/app/type/type-new/type-new.component';
+import { ModalComponent } from 'src/app/core/modal/modal.component';
 
 @Component({
   selector: 'app-plans-form',
@@ -22,12 +23,14 @@ export class PlansFormComponent implements OnInit {
   plans: PlanModel[];
   allPlans: PlanModel[];
   dialogRef: MatDialogRef<TypeNewComponent>;
+  modalRef: MatDialogRef<ModalComponent>;
 
   constructor(private apiConnection: ApiService,
               private formBuilder: FormBuilder,
               private bottomSheetRef: MatBottomSheetRef<PlansFormComponent>,
               public dialog: MatDialog,
               private planService: PlansService) {
+
     this.formPlan = formBuilder.group({
       name : [null, [Validators.required, Validators.minLength(5)]],
       idType: [1, [Validators.required]],
@@ -78,9 +81,25 @@ export class PlansFormComponent implements OnInit {
         status: 'Aguardando início',
         idBelongsTo: this.formPlan.value.idBelongsTo == null ? 0 : this.formPlan.value.idBelongsTo
       });
-      this.apiConnection.createPlan(valueSubmit).subscribe( status => console.log(status === 200));
-      this.formPlan.reset();
-      this.bottomSheetRef.dismiss();
+      this.apiConnection.createPlan(valueSubmit).subscribe( data => {
+        if (data) {
+          this.modalRef = this.dialog.open(ModalComponent, {
+           data: {
+            message: 'Plano inserido com sucesso!',
+            cancel: false
+           }
+          });
+          this.formPlan.reset();
+          this.bottomSheetRef.dismiss();
+        } else {
+          this.modalRef = this.dialog.open(ModalComponent, {
+            data: {
+              message: 'Erro! Plano não pode ser inserido.',
+              cancel: false
+            }
+          });
+        }
+      });
     }
   }
 

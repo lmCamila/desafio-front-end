@@ -1,3 +1,4 @@
+import { AppRoutingModule } from './../app.routing.module';
 import { DemoMaterialModule } from './../material-module';
 import { CommonModule } from '@angular/common';
 import { MenuComponent } from './menu.component';
@@ -9,7 +10,8 @@ import { NgModule } from '@angular/core';
   ],
   imports: [
     CommonModule,
-    DemoMaterialModule
+    DemoMaterialModule,
+    AppRoutingModule
   ],
   entryComponents: [
     MenuComponent

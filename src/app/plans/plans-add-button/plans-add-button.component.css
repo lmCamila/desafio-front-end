@@ -1,0 +1,7 @@
+#button-new-plan {
+    float: left;
+    position: absolute;
+    background: rgb(58, 191, 214);
+    margin-top:5%;
+    left: 3%;
+}

@@ -5,9 +5,9 @@
       <mat-icon mat-list-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menuType="matMenu">
-      <button mat-menu-item>
+      <button mat-menu-item (click)="openEdit()" >
         <mat-icon >edit</mat-icon>Editar
-      </button>
+      </button> 
       <button mat-menu-item>
         <mat-icon>delete</mat-icon>Remover
       </button>

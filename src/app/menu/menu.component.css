@@ -31,7 +31,6 @@
   }
   .menu-sidenav-container {
     flex: 1 0 auto;
-    margin:0%;
     background-color: #E6E6E6 !important;
     width: 250px;
   }
@@ -39,6 +38,6 @@
  .selected-item{
    border-left: 5px solid royalblue;
    border-radius: 2%;
-   background-color: rgba(123, 183, 211, 0.322);
+   background: rgba(123, 183, 211, 0.322) !important;
 
  }

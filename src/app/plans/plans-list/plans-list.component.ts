@@ -12,7 +12,6 @@ import { Subscription } from 'rxjs';
 export class PlansListComponent implements OnInit, OnDestroy {
 
   plans: PlanModel[];
-  subPlans: PlanModel[] = [];
 
   plansListSubscribe: Subscription;
 

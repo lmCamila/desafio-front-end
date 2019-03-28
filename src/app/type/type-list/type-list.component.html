@@ -1,12 +1,14 @@
 <mat-card class="card-list">
   <mat-card-header>
-    <mat-card-title style="padding: 15%; font-size: 20pt;">Tipo de Planos</mat-card-title>
+    <mat-card-title style="width:100%;padding: 15% 15% 0% 15% ; font-size: 20pt;">Tipo de Planos</mat-card-title>
+    <mat-card-actions>
+      <mat-divider style="margin-top:10%"></mat-divider>
+      <app-type-add></app-type-add>
+    </mat-card-actions>
   </mat-card-header>
-  <app-type-add></app-type-add>
-  <mat-divider style="box-shadow:0px 3px 7px rgba(0, 0, 0, 0.5)"></mat-divider>
-  <mat-card-content style="margin-top: 4%">
+  <mat-card-content style="margin-top: 3%">
     <mat-list>
       <app-type *ngFor="let t of types" [type]="t"></app-type>
     </mat-list>
-    </mat-card-content>
+  </mat-card-content>
 </mat-card>

@@ -6,13 +6,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DemoMaterialModule } from '../material-module';
 import { TypeAddComponent } from './type-add/type-add.component';
 import { TypeListComponent } from './type-list/type-list.component';
+import { TypeRoutingModule } from './type.routing.module';
 
 @NgModule({
   declarations: [TypeComponent, TypeNewComponent, TypeAddComponent, TypeListComponent],
   imports: [
     CommonModule,
     DemoMaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TypeRoutingModule
   ],
   entryComponents: [TypeNewComponent],
   exports: [TypeNewComponent, TypeListComponent]
