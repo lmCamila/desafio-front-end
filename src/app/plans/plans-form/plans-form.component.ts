@@ -73,12 +73,12 @@ export class PlansFormComponent implements OnInit {
       let valueSubmit = Object.assign({}, this.formPlan.value);
       valueSubmit = Object.assign(valueSubmit, {
         idAccountable: this.planService.getUserId(this.allUsers, this.formPlan.value.idAccountable),
-        start: String(this.formPlan.value.start),
-        end: String(this.formPlan.value.end),
+        start: this.formPlan.value.start == null ? null : String(this.formPlan.value.start),
+        end: this.formPlan.value.end == null ? null : String(this.formPlan.value.end),
         status: 'Aguardando início',
         idBelongsTo: this.formPlan.value.idBelongsTo == null ? 0 : this.formPlan.value.idBelongsTo
       });
-      this.apiConnection.createPlan(valueSubmit).subscribe( status => console.log(status));
+      this.apiConnection.createPlan(valueSubmit).subscribe( status => console.log(status === 200));
       this.formPlan.reset();
       this.bottomSheetRef.dismiss();
     }

@@ -1,13 +1,14 @@
 <div style="display: flex; flex-direction:column">
-  <form [formGroup]="formType">
+  <form [formGroup]="formType" (ngSubmit)="onSubmit()">
     <div style="display:inline">
-      <button mat-icon-button matTooltip="Cancelar" style="position:relative; float:left; margin-right: 2%">
+      <button mat-icon-button matTooltip="Cancelar" style="position:relative; float:left; margin-right: 2%"
+      (click)="close()">
         <mat-icon>close</mat-icon>
       </button>
       <h1 mat-dialog-title style="position:relative; float:left;">Cadastro Tipo</h1>
     </div>
     <div mat-dialog-content>
-      <button mat-icon-button matTooltip="Confirmar" style="position:relative; float:right">
+      <button mat-icon-button type="submit" matTooltip="Confirmar" style="position:relative; float:right">
         <mat-icon>done</mat-icon>
       </button>
     </div>
