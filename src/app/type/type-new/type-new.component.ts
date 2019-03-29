@@ -65,6 +65,7 @@ export class TypeNewComponent implements OnInit {
     }
   }
 
+  // verifica a rota
   verifyMode() {
     if (this.route.url.split('/')[2] === 'new') {
       this.title = 'Cadastrar';
@@ -74,7 +75,7 @@ export class TypeNewComponent implements OnInit {
       this.api.getTypeById(this.id).subscribe(data => this.fillFormType(data));
     }
   }
-
+ // preenche formulário
   fillFormType(type: TypeModel) {
     this.formType.patchValue({
       name: type.name,

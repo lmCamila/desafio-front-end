@@ -35,7 +35,7 @@ export class ApiService {
     return this.httpCliente.get<TypeModel[]>(`${environment.apiUrl}/types`).pipe(take(1));
   }
 
-  getTypeById(id: number) {
+  getTypeById(id) {
     return this.httpCliente.get<TypeModel>(`${environment.apiUrl}/types/${id}`).pipe(take(1));
   }
 

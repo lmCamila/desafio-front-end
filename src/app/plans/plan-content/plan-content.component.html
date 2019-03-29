@@ -3,7 +3,8 @@
     <h3>{{plan.name}}</h3>
     <p>{{ plan.status }}</p>
     <p *ngIf="plan.start && plan.end" >De {{   plan.start | date:'shortDate' }} até {{ plan.end | date:'shortDate' }}</p>
-    <p *ngIf="plan.start || plan.end" >De {{ plan.start | date:'shortDate' }} até {{ plan.end | date:'shortDate' }}</p>
+    <p *ngIf="plan.start && !plan.end" >Início em {{ plan.start | date:'shortDate' }} </p>
+    <p *ngIf="!plan.start && plan.end" >Término {{ plan.end | date:'shortDate' }}</p>
     <p *ngIf="!plan.start && !plan.end" >Sem prazo definido</p>
   </div>
   <div class="right" style="display:flex;float: right;position:relative; margin-top:2%;">
@@ -16,7 +17,7 @@
         <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-        <button mat-menu-item><mat-icon>edit</mat-icon>Editar</button>
+        <button mat-menu-item (click)="openEdit()"><mat-icon>edit</mat-icon>Editar</button>
         <button mat-menu-item [matMenuTriggerFor]="status">Mudar status</button>
         <button mat-menu-item><mat-icon>delete</mat-icon>Remover</button>
       </mat-menu>

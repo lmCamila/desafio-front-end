@@ -10,4 +10,5 @@ export interface PlanModel {
     end: string;
     idBelongsTo: number;
     description: string;
+    costs: number;
 }
