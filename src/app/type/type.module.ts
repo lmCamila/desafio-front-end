@@ -1,22 +1,32 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TypeComponent } from './type/type.component';
-import { TypeNewComponent } from './type-new/type-new.component';
 import { ReactiveFormsModule } from '@angular/forms';
+
 import { DemoMaterialModule } from '../material-module';
 import { TypeAddComponent } from './type-add/type-add.component';
+import { TypeComponent } from './type/type.component';
+import { TypeFormComponent } from './type-form/type-form.component';
 import { TypeListComponent } from './type-list/type-list.component';
-import { TypeRoutingModule } from './type.routing.module';
+// import { TypeRoutingModule } from './type.routing.module';
 
 @NgModule({
-  declarations: [TypeComponent, TypeNewComponent, TypeAddComponent, TypeListComponent],
+  declarations: [
+    TypeComponent,
+    TypeFormComponent,
+    TypeAddComponent,
+    TypeListComponent
+  ],
   imports: [
     CommonModule,
     DemoMaterialModule,
-    ReactiveFormsModule,
-    TypeRoutingModule
+    ReactiveFormsModule
   ],
-  entryComponents: [TypeNewComponent],
-  exports: [TypeNewComponent, TypeListComponent]
+  entryComponents: [
+    TypeFormComponent
+  ],
+  exports: [
+    TypeFormComponent,
+    TypeListComponent
+  ]
 })
 export class TypeModule { }

@@ -9,10 +9,10 @@
   </div>
   <div class="right" style="display:flex;float: right;position:relative; margin-top:2%;">
     <div style="margin-top:3%">
-      <p>Usuário Qualiex</p>
-      <p>email@email.com</p>
+      <p>{{ user.name }}</p>
+      <p>{{ user.email }}</p>
     </div>
-    <img class="img-avatar"src="https://res.cloudinary.com/dereqydhf/image/upload/v1552890854/ir9vafcarj78jg3gyohm.jpg" />
+    <img class="img-avatar" [src]="user.avatar" />
     <button mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>more_vert</mat-icon>
     </button>

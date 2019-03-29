@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TypeNewComponent } from './type-new.component';
+import { TypeFormComponent } from './type-form.component';
 
 describe('TypeNewComponent', () => {
-  let component: TypeNewComponent;
-  let fixture: ComponentFixture<TypeNewComponent>;
+  let component: TypeFormComponent;
+  let fixture: ComponentFixture<TypeFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TypeNewComponent ]
+      declarations: [ TypeFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TypeNewComponent);
+    fixture = TestBed.createComponent(TypeFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

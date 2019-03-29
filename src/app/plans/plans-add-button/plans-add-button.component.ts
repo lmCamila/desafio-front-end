@@ -17,8 +17,11 @@ export class PlansAddButtonComponent implements OnInit {
   }
 
   openFormNew() {
-    this.bottomSheet.open(PlansFormComponent);
-    this.router.navigate(['planner/new']);
+    this.bottomSheet.open(PlansFormComponent, {
+      data: {
+        mode: 'new'
+      }
+    });
   }
 
 }

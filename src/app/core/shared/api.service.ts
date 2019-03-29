@@ -30,6 +30,14 @@ export class ApiService {
     return this.httpCliente.post(`${environment.apiUrl}/plans`, plan, this.httpConf).pipe(take(1));
   }
 
+  updatePlan(plan, id) {
+    return this.httpCliente.put(`${environment.apiUrl}/plans/${id}`, plan, this.httpConf).pipe(take(1));
+  }
+
+  deletePlan(id) {
+    return this.httpCliente.delete(`${environment.apiUrl}/plans/${id}`).pipe(take(1));
+  }
+
 // types
   getTypes() {
     return this.httpCliente.get<TypeModel[]>(`${environment.apiUrl}/types`).pipe(take(1));
@@ -41,6 +49,14 @@ export class ApiService {
 
   createType(type) {
     return this.httpCliente.post(`${environment.apiUrl}/types`, type, this.httpConf).pipe(take(1));
+  }
+
+  updateType(type, id) {
+    return this.httpCliente.put(`${environment.apiUrl}/types/${id}`, type, this.httpConf).pipe(take(1));
+  }
+
+  deleteType(id) {
+    return this.httpCliente.delete(`${environment.apiUrl}/types/${id}`).pipe(take(1));
   }
 
 // users

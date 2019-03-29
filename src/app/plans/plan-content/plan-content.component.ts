@@ -1,3 +1,5 @@
+import { ApiService } from './../../core/shared/api.service';
+import { UserModel } from './../shared/user-model';
 import { MatBottomSheet } from '@angular/material';
 import { PlanModel } from './../shared/plan-model';
 import { Component, OnInit, Input, LOCALE_ID } from '@angular/core';
@@ -12,15 +14,23 @@ import { PlansFormComponent } from '../plans-form/plans-form.component';
 export class PlanContentComponent implements OnInit {
 
   @Input() plan: PlanModel;
+  user: UserModel;
 
   constructor(private bottomSheet: MatBottomSheet,
-              private router: Router) { }
+              private api: ApiService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.api.getUsersById(this.plan.idAccountable).subscribe(user => this.user = user);
+  }
 
   openEdit() {
-    this.bottomSheet.open(PlansFormComponent);
-    this.router.navigate(['planner/edit/', this.plan.id]);
+    this.bottomSheet.open(PlansFormComponent, {
+      data: {
+        mode: 'edit',
+        id: this.plan.id
+      }
+    });
+  /*   this.router.navigate([ `planner/edit/${this.plan.id}`]); */
   }
 
 }

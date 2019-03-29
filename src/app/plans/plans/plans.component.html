@@ -19,24 +19,8 @@
   </mat-tree> -->
   <mat-accordion *ngIf="subPlans.length != 0">
     <mat-expansion-panel style="width:97% !important; height: 100%; padding: 2%">
-      <mat-expansion-panel-header style="max-width: 90% !important;padding: 2%">
-        <mat-panel-title>
-          <div class="left" style="display:flex;flex-direction:column;">
-            <h3>{{plan.name}}</h3>
-            <p>{{ plan.status }}</p>
-            <p>De {{ plan.start }} até {{ plan.end }}</p>
-          </div>
-        </mat-panel-title>
-        <mat-panel-description>
-          <div class="right" style="display:flex;float: right;position:relative; margin-top:2%;">
-            <div style="margin-top:3%">
-              <p>Usuário Qualiex</p>
-              <p>email@email.com</p>
-            </div>
-            <img class="img-avatar"src="https://res.cloudinary.com/dereqydhf/image/upload/v1552890854/ir9vafcarj78jg3gyohm.jpg" />
-            <mat-icon>more_vert</mat-icon>
-          </div>
-        </mat-panel-description>
+      <mat-expansion-panel-header style="max-width: 100% !important;padding: 2%">
+          <app-plan-content [plan]=plan></app-plan-content>
       </mat-expansion-panel-header>
       <div cdkDropList class="list" [cdkDropListData]="subPlans" (cdkDropListDropped)="plansDragAndDrop.drop($event)">
         <div *ngFor="let p of subPlans" cdkDrag class="box">

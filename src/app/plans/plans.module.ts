@@ -33,8 +33,7 @@ registerLocaleData(ptBr);
     HttpClientModule,
     ReactiveFormsModule,
     MatNativeDateModule,
-    FormsModule,
-    PlanRoutingModule
+    FormsModule
   ],
   exports: [
     PlansComponent,

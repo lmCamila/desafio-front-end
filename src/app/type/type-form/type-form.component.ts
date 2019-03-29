@@ -1,19 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MatDialog } from '@angular/material';
+import { MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 
-import { ApiService } from './../../core/shared/api.service';
+import { ApiService } from '../../core/shared/api.service';
 import { TypeService } from '../shared/type.service';
 import { ModalComponent } from 'src/app/core/modal/modal.component';
-import { ActivatedRoute, Router } from '@angular/router';
 import { TypeModel } from '../shared/type-model';
 
 @Component({
-  selector: 'app-type-new',
-  templateUrl: './type-new.component.html',
-  styleUrls: ['./type-new.component.css']
+  selector: 'app-type-form',
+  templateUrl: './type-form.component.html',
+  styleUrls: ['./type-form.component.css']
 })
-export class TypeNewComponent implements OnInit {
+export class TypeFormComponent implements OnInit {
 
   formType: FormGroup;
   modalRef: MatDialogRef<ModalComponent>;
@@ -21,11 +20,11 @@ export class TypeNewComponent implements OnInit {
   id: number;
 
   constructor(private api: ApiService,
-              public dialogRef: MatDialogRef<TypeNewComponent>,
+              public dialogRef: MatDialogRef<TypeFormComponent>,
               private formBuilder: FormBuilder,
               private modal: MatDialog,
               private typeService: TypeService,
-              private route: Router) {
+              @Inject(MAT_DIALOG_DATA) public data: any) {
 
     this.formType = this.formBuilder.group({
       name: [null, [Validators.required]],
@@ -67,12 +66,12 @@ export class TypeNewComponent implements OnInit {
 
   // verifica a rota
   verifyMode() {
-    if (this.route.url.split('/')[2] === 'new') {
+    if (this.data.mode === 'new') {
       this.title = 'Cadastrar';
     } else {
       this.title = 'Editar';
-      this.id = Number(this.route.url.split('/')[3]);
-      this.api.getTypeById(this.id).subscribe(data => this.fillFormType(data));
+      this.api.getTypeById(this.data.id).subscribe(data => this.fillFormType(data));
+      this.id = this.data.id;
     }
   }
  // preenche formulário

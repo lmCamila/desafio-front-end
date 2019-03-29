@@ -1,8 +1,8 @@
 <div style="min-width:200px;max-width: 500px;padding-bottom: 30%; display: flex; flex-direction: column; ">
 
-  <form [formGroup]="formPlan" (ngSubmit)="onSubmit()" >
+  <form [formGroup]="formPlan" (ngSubmit)="onSubmit()">
     <div style="display:inline;">
-      <button mat-icon-button matTooltip="Cancelar" (click)="close()"  style="position:relative; float:left;">
+      <button mat-icon-button type="button" matTooltip="Cancelar" (click)="close()" style="position:relative; float:left;">
         <mat-icon>close</mat-icon>
       </button>
       <h1 style="position:relative; float:left;">{{ title }} Plano</h1>
@@ -34,8 +34,8 @@
 
         <!-- input responsável pelo plano -->
         <mat-form-field style="width: 100%">
-          <input matInput #acountable placeholder="Responsável(quem?)" formControlName="idAccountable" [matAutocomplete]="auto"
-            (keyup)="filterAccountable($event)">
+          <input matInput #acountable placeholder="Responsável(quem?)" formControlName="idAccountable"
+            [matAutocomplete]="auto" (keyup)="filterAccountable($event)">
           <button mat-button *ngIf="acountable.value" matSuffix mat-icon-button aria-label="Clear"
             (click)="acountable.value=''">
             <mat-icon>close</mat-icon>
@@ -60,8 +60,8 @@
 
         <!-- input de pertence a algum plano -->
         <mat-form-field style="width: 100%">
-          <input matInput #plan placeholder="Pertence ao plano" formControlName="idBelongsTo" [matAutocomplete]="autoPlan"
-            (keyup)=" filterPlans($event)">
+          <input matInput #plan placeholder="Pertence ao plano" formControlName="idBelongsTo"
+            [matAutocomplete]="autoPlan" (keyup)=" filterPlans($event)">
           <button mat-button *ngIf="plan.value" matSuffix mat-icon-button aria-label="Clear" (click)="plan.value=''">
             <mat-icon>close</mat-icon>
           </button>
@@ -74,23 +74,18 @@
 
         <!-- input de descrição do plano -->
         <mat-form-field style="width: 100%;">
-          <textarea #description formControlName="description" matInput maxlength="1000" rows="3" placeholder="Descrição"
-            style="height:100%"></textarea>
+          <textarea #description formControlName="description" matInput maxlength="1000" rows="3"
+            placeholder="Descrição" style="height:100%"></textarea>
           <mat-hint align="end">{{description.value.length}} / 1000</mat-hint>
         </mat-form-field>
 
-        <!-- input de pessoas interessadas no plano -->
+        <!-- input de pessoas interessadas no plano -->     
         <mat-form-field style="width: 100%;">
-          <mat-select placeholder="Pessoas interessadas" #interestedPeople formControlName="interestedPeople" multiple>
-            <mat-select-trigger>
-                <span *ngIf="interestedPeople.value?.length >= 1" class="example-additional-selection">
-                    ({{interestedPeople.value.length}} {{interestedPeople.value?.length === 1 ? 'selecionado' : 'selecionados'}})
-                  </span>
-            </mat-select-trigger>
+          <mat-label>PessoasInterresadas</mat-label>
+          <mat-select multiple formControlName="interestedPeople" >
             <mat-option *ngFor="let u of allUsers" [value]="u.id">{{u.name}}</mat-option>
           </mat-select>
         </mat-form-field>
-
         <!-- input de custo estimado do plano -->
         <mat-form-field>
           <span matPrefix>R$ &nbsp;</span>

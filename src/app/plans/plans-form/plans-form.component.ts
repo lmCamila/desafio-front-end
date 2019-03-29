@@ -1,14 +1,14 @@
+import { Component, OnInit, Inject } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatDialog, MatDialogRef, MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material';
+
+import { ApiService } from '../../core/shared/api.service';
+import { ModalComponent } from 'src/app/core/modal/modal.component';
 import { PlansService } from './../shared/plans.service';
 import { PlanModel } from './../shared/plan-model';
-import { ApiService } from '../../core/shared/api.service';
 import { TypeModel } from '../../type/shared/type-model';
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { TypeFormComponent } from 'src/app/type/type-form/type-form.component';
 import { UserModel } from '../shared/user-model';
-import { MatDialog, MatDialogRef, MatBottomSheetRef } from '@angular/material';
-import { TypeNewComponent } from 'src/app/type/type-new/type-new.component';
-import { ModalComponent } from 'src/app/core/modal/modal.component';
-import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-plans-form',
@@ -23,22 +23,21 @@ export class PlansFormComponent implements OnInit {
   allUsers: UserModel[];
   plans: PlanModel[];
   allPlans: PlanModel[];
-  dialogRef: MatDialogRef<TypeNewComponent>;
+  dialogRef: MatDialogRef<TypeFormComponent>;
   modalRef: MatDialogRef<ModalComponent>;
   title = 'Novo';
   id: number;
+
 
   constructor(private apiConnection: ApiService,
               private formBuilder: FormBuilder,
               private bottomSheetRef: MatBottomSheetRef<PlansFormComponent>,
               public dialog: MatDialog,
               private planService: PlansService,
-              private route: Router,
-              private activateRouter: ActivatedRoute) {
-    this.verifyMode();
-    console.log(activateRouter.snapshot.params['id']);
+              @Inject(MAT_BOTTOM_SHEET_DATA) public data: any) {
+
     this.formPlan = formBuilder.group({
-      name : [null, [Validators.required, Validators.minLength(5)]],
+      name: [null, [Validators.required, Validators.minLength(5)]],
       idType: [1, [Validators.required]],
       idAccountable: [null, [Validators.required]],
       start: [null],
@@ -66,53 +65,76 @@ export class PlansFormComponent implements OnInit {
       this.plans = data;
       this.allPlans = data;
     });
-    
+
+    this.verifyMode();
   }
 
   filterAccountable(event: KeyboardEvent) {
     const patern = `.*${(event.target as HTMLInputElement).value}`;
-    this.users = this.allUsers.filter( user => new RegExp(patern, 'gi').test(user.name));
+    this.users = this.allUsers.filter(user => new RegExp(patern, 'gi').test(user.name));
   }
 
   filterPlans(event: KeyboardEvent) {
     const patern = `.*${(event.target as HTMLInputElement).value}`;
-    this.plans = this.allPlans.filter( plan => new RegExp(patern, 'gi').test(plan.name));
+    this.plans = this.allPlans.filter(plan => new RegExp(patern, 'gi').test(plan.name));
   }
 
   onSubmit() {
-    if (this.formPlan.valid) {
-      let valueSubmit = Object.assign({}, this.formPlan.value);
-      valueSubmit = Object.assign(valueSubmit, {
-        idAccountable: this.planService.getUserId(this.allUsers, this.formPlan.value.idAccountable),
-        start: this.formPlan.value.start == null ? null : String(this.formPlan.value.start),
-        end: this.formPlan.value.end == null ? null : String(this.formPlan.value.end),
-        status: 'Aguardando início',
-        idBelongsTo: this.formPlan.value.idBelongsTo == null ? 0 : this.formPlan.value.idBelongsTo
-      });
-      this.apiConnection.createPlan(valueSubmit).subscribe( data => {
-        if (data) {
-          this.modalRef = this.dialog.open(ModalComponent, {
-           data: {
-            message: 'Plano inserido com sucesso!',
-            cancel: false
-           }
-          });
-          this.formPlan.reset();
-          this.bottomSheetRef.dismiss();
-        } else {
-          this.modalRef = this.dialog.open(ModalComponent, {
-            data: {
-              message: 'Erro! Plano não pode ser inserido.',
-              cancel: false
-            }
-          });
-        }
-      });
+    let valueSubmit = Object.assign({}, this.formPlan.value);
+    valueSubmit = Object.assign(valueSubmit, {
+      idAccountable: this.planService.getUserId(this.allUsers, this.formPlan.value.idAccountable),
+      start: this.formPlan.value.start == null ? null : String(this.formPlan.value.start),
+      end: this.formPlan.value.end == null ? null : String(this.formPlan.value.end),
+      status: 'Aguardando início',
+      idBelongsTo: this.formPlan.value.idBelongsTo == null ? 0 : this.formPlan.value.idBelongsTo
+    });
+    if ( this.data.mode === 'new') {
+      if (this.formPlan.valid) {
+        this.apiConnection.createPlan(valueSubmit).subscribe(data => {
+          if (data) {
+            this.modalRef = this.dialog.open(ModalComponent, {
+              data: {
+                message: 'Plano inserido com sucesso!',
+                cancel: false
+              }
+            });
+            this.formPlan.reset();
+            this.bottomSheetRef.dismiss();
+          } else {
+            this.modalRef = this.dialog.open(ModalComponent, {
+              data: {
+                message: 'Erro! Plano não pode ser inserido.',
+                cancel: false
+              }
+            });
+          }
+        });
+      }
+    } else if ( this.data.mode === 'edit') {
+      if (this.formPlan.value) {
+        this.apiConnection.updatePlan(valueSubmit, this.id).subscribe( data => {
+          if (data) {
+            this.modalRef = this.dialog.open(ModalComponent, {
+              data: {
+                message: 'Plano alterado com sucesso!',
+                cancel: false
+              }
+            });
+          } else {
+            this.modalRef = this.dialog.open(ModalComponent, {
+              data: {
+                message: 'Erro! Plano não pode ser alterado.',
+                cancel: false
+              }
+            });
+          }
+        });
+      }
     }
   }
 
   openDialog() {
-    this.dialogRef = this.dialog.open(TypeNewComponent);
+    this.dialogRef = this.dialog.open(TypeFormComponent);
   }
 
   close() {
@@ -120,28 +142,23 @@ export class PlansFormComponent implements OnInit {
   }
 
   verifyMode() {
-    console.log(this.route.url.split('/')[2] === 'new');
-    if (this.route.url.split('/')[2] === 'new') {
+    if (this.data.mode === 'new') {
       this.title = 'Cadastrar';
     } else {
       this.title = 'Editar';
-      this.id = Number(this.route.url.split('/')[3]);
-      console.log(this.activateRouter.snapshot);
-      this.apiConnection.getPlansById(this.route.url.split('/')[3]).subscribe(data => this.fillFormPlan(data));
+      this.apiConnection.getPlansById(this.data.id).subscribe(data => this.fillFormPlan(data));
+      this.id = this.data.id;
     }
   }
 
   fillFormPlan(plan: PlanModel) {
-    this.formPlan.patchValue({
-      name : plan.name ,
-      idType: plan.idType ,
-      idAccountable: this.allUsers.filter(u => u.id = plan.idAccountable)[0].name ,
+    plan = Object.assign(plan, {
+      idAccountable: this.allUsers.filter(u => u.id === plan.idAccountable)[0].name,
       start: new Date(plan.start),
       end: new Date(plan.end),
-      idBelongsTo: this.allPlans.filter( p => p.idBelongsTo === plan.idBelongsTo)[0].name,
-      description: plan.description,
-      interestedPeople: plan.interestedPeople,
-      costs: plan.costs
+      idBelongsTo: this.allPlans.filter(p => p.idBelongsTo === plan.idBelongsTo)[0].name
     });
+
+    this.formPlan.patchValue(plan);
   }
 }

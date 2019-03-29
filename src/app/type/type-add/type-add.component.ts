@@ -1,7 +1,7 @@
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef, MatDialog } from '@angular/material';
-import { TypeNewComponent } from '../type-new/type-new.component';
+
+import { TypeFormComponent } from '../type-form/type-form.component';
 
 @Component({
   selector: 'app-type-add',
@@ -10,14 +10,16 @@ import { TypeNewComponent } from '../type-new/type-new.component';
 })
 export class TypeAddComponent implements OnInit {
 
-  dialogRef: MatDialogRef<TypeNewComponent>;
+  dialogRef: MatDialogRef<TypeFormComponent>;
 
-  constructor(private dialog: MatDialog,
-              private router: Router) { }
+  constructor(private dialog: MatDialog) { }
 
   openDialog() {
-    this.dialogRef = this.dialog.open(TypeNewComponent);
-    this.router.navigate(['type/new']);
+    this.dialogRef = this.dialog.open(TypeFormComponent, {
+      data: {
+        mode: 'new'
+      }
+    });
   }
 
   ngOnInit() {
