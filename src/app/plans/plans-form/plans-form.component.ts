@@ -36,6 +36,7 @@ export class PlansFormComponent implements OnInit {
               private route: Router,
               private activateRouter: ActivatedRoute) {
     this.verifyMode();
+    console.log(activateRouter.snapshot.params['id']);
     this.formPlan = formBuilder.group({
       name : [null, [Validators.required, Validators.minLength(5)]],
       idType: [1, [Validators.required]],
