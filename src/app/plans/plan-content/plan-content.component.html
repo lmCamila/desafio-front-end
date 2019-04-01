@@ -1,18 +1,18 @@
 <div style="width:100%;display: flex; justify-content: space-between">
   <div class="left" style="display:flex;flex-direction:column;">
-    <h3>{{plan.name}}</h3>
-    <p>{{ plan.status }}</p>
-    <p *ngIf="plan.start && plan.end" >De {{   plan.start | date:'shortDate' }} até {{ plan.end | date:'shortDate' }}</p>
-    <p *ngIf="plan.start && !plan.end" >Início em {{ plan.start | date:'shortDate' }} </p>
-    <p *ngIf="!plan.start && plan.end" >Término {{ plan.end | date:'shortDate' }}</p>
-    <p *ngIf="!plan.start && !plan.end" >Sem prazo definido</p>
-  </div>
-  <div class="right" style="display:flex;float: right;position:relative; margin-top:2%;">
-    <div style="margin-top:3%">
-      <p>{{ user.name }}</p>
-      <p>{{ user.email }}</p>
-    </div>
-    <img class="img-avatar" [src]="user.avatar" />
+    <h3>{{ plan?.name }}</h3>
+          <p>{{ plan?.status }}</p>
+          <p *ngIf="plan?.start && plan?.end" >De {{   plan?.start | date:'shortDate' }} até {{ plan?.end | date:'shortDate' }}</p>
+          <p *ngIf="plan?.start && !plan?.end" >Início em {{ plan?.start | date:'shortDate' }} </p>
+          <p *ngIf="!plan?.start && plan?.end" >Término {{ plan?.end | date:'shortDate' }}</p>
+          <p *ngIf="!plan?.start && !plan?.end" >Sem prazo definido</p>
+        </div>
+        <div class="right" style="display:flex;float: right;position:relative; margin-top:2%;">
+          <div style="margin-top:3%">
+            <p>{{ user?.name }}</p>
+            <p>{{ user?.email }}</p>
+          </div>
+          <img class="img-avatar" [src]="user?.avatar" />
     <button mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>more_vert</mat-icon>
     </button>
@@ -22,10 +22,10 @@
         <button mat-menu-item><mat-icon>delete</mat-icon>Remover</button>
       </mat-menu>
       <mat-menu #status="matMenu">
-        <button mat-menu-item><mat-icon>play_arrow</mat-icon>Iniciar</button>
-        <button mat-menu-item><mat-icon>done</mat-icon>Concluir</button>
-        <button mat-menu-item><mat-icon>pause</mat-icon>Suspender</button>
-        <button mat-menu-item><mat-icon>cancel</mat-icon>Cancelar</button>
+        <button mat-menu-item (click)="updateStatus('Iniciado')"><mat-icon>play_arrow</mat-icon>Iniciar</button>
+        <button mat-menu-item (click)="updateStatus('Concluído')"><mat-icon>done</mat-icon>Concluir</button>
+        <button mat-menu-item (click)="updateStatus('Suspenso')"><mat-icon>pause</mat-icon>Suspender</button>
+        <button mat-menu-item (click)="updateStatus('Cancelado')"><mat-icon>cancel</mat-icon>Cancelar</button>
       </mat-menu>
   </div>
 </div>

@@ -127,53 +127,17 @@
       "id": 55
     },
     {
-      "name": "Teste 2 ",
-      "idType": 1,
-      "idAccountable": 5,
+      "name": "Plano de Expansão para o México",
+      "idType": 2,
+      "idAccountable": 2,
       "start": "Wed Dec 31 1969 21:00:00 GMT-0300 (Horário Padrão de Brasília)",
       "end": "Wed Dec 31 1969 21:00:00 GMT-0300 (Horário Padrão de Brasília)",
       "idBelongsTo": null,
-      "description": "teste com id pertence ao projeto = 0",
+      "description": "",
       "interestedPeople": [],
       "costs": null,
-      "status": "Aguardando início",
+      "status": "Suspenso",
       "id": 56
-    },
-    {
-      "name": "teste testes teste",
-      "idType": 1,
-      "idAccountable": 1,
-      "start": null,
-      "end": null,
-      "idBelongsTo": null,
-      "description": null,
-      "interestedPeople": [
-        2,
-        3,
-        4,
-        6
-      ],
-      "costs": null,
-      "status": "Aguardando início",
-      "id": 57
-    },
-    {
-      "name": "Projeto teste insomnia",
-      "status": "Aguardando inicio",
-      "email": "teste.testeteste@teste.com",
-      "idType": 3,
-      "idAccountable": 7,
-      "start": "22/03/2018",
-      "end": "22/04/2019",
-      "idBelongsTo": null,
-      "description": "lalalalallaalla",
-      "interestedPeople": [
-        1,
-        2,
-        3
-      ],
-      "costs": 250.35,
-      "id": 58
     },
     {
       "name": "aaaaa",
@@ -193,22 +157,30 @@
       "id": 59
     },
     {
-      "name": "Testee 29/03",
+      "name": "Plano de Crescimento dos lucros no mês de abril",
       "idType": 1,
-      "idAccountable": 1,
+      "idAccountable": 3,
       "start": "Wed Dec 31 1969 21:00:00 GMT-0300 (Horário Padrão de Brasília)",
       "end": "Wed Dec 31 1969 21:00:00 GMT-0300 (Horário Padrão de Brasília)",
-      "idBelongsTo": null,
+      "idBelongsTo": 0,
       "description": null,
-      "interestedPeople": [
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
+      "interestedPeople": null,
       "costs": null,
       "status": "Aguardando início",
       "id": 60
+    },
+    {
+      "name": "Plano 1",
+      "idType": 1,
+      "idAccountable": 3,
+      "start": null,
+      "end": null,
+      "idBelongsTo": null,
+      "description": null,
+      "interestedPeople": null,
+      "costs": null,
+      "status": "Suspenso",
+      "id": 61
     }
   ],
   "types": [
@@ -218,9 +190,9 @@
       "description": "Plano estratégico"
     },
     {
-      "id": 2,
-      "name": "Plano de Crescimento/ Expanção",
-      "description": "Plano de Crescimento"
+      "name": "Plano de Expansão",
+      "description": "Plano de Crescimento",
+      "id": 2
     },
     {
       "id": 3,
@@ -238,12 +210,12 @@
       "description": "Plano Operacional"
     },
     {
-      "name": "Plano de Crescimento/ Expanção",
+      "name": "Plano de Crescimento/ Expansão",
       "description": "Plano de Crescimento",
       "id": 6
     },
     {
-      "name": "Plano de Crescimento/ Expanção",
+      "name": "Plano de Crescimento",
       "description": "Plano de Crescimento",
       "id": 7
     }

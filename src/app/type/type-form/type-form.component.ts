@@ -42,25 +42,52 @@ export class TypeFormComponent implements OnInit {
 
   onSubmit() {
     if (this.formType.valid) {
-      this.api.createType(this.formType.value).subscribe(data => {
-        if (data) {
-          this.typeService.getListFromApi();
-          this.modalRef = this.modal.open(ModalComponent, {
-            data: {
-              message: 'Tipo inserido com sucesso!',
-              cancel: false
-            }
-          });
-          this.formType.reset();
-        } else {
-          this.modalRef = this.modal.open(ModalComponent, {
-            data: {
-              message: 'Erro! Tipo não pode ser inserido.',
-              cancel: false
-            }
-          });
-        }
-      });
+      // verifica se o modo da modal é novo e faz a requisição com os dados para a api
+      if (this.data.mode === 'new') {
+        this.api.createType(this.formType.value).subscribe(
+          success => {
+            this.typeService.getListFromApi();
+            this.modalRef = this.modal.open(ModalComponent, {
+              data: {
+                message: 'Tipo inserido com sucesso!',
+                cancel: false
+              }
+            });
+            this.formType.reset();
+            this.dialogRef.close();
+          },
+          error => {
+            this.modalRef = this.modal.open(ModalComponent, {
+              data: {
+                message: 'Erro! Tipo não pode ser inserido.',
+                cancel: false
+              }
+            });
+          }
+        );
+      } else if ( this.data.mode === 'edit') {
+        this.api.updateType(this.formType.value, this.id).subscribe(
+          success => {
+            this.typeService.getListFromApi();
+            this.modalRef = this.modal.open(ModalComponent, {
+              data: {
+                message: 'Tipo alterado com sucesso!',
+                cancel: false
+              }
+            });
+            this.formType.reset();
+            this.dialogRef.close();
+          },
+          error => {
+            this.modalRef = this.modal.open(ModalComponent, {
+              data: {
+                message: 'Erro! Tipo não pode ser inserido.',
+                cancel: false
+              }
+            });
+          }
+        );
+      }
     }
   }
 
@@ -74,6 +101,7 @@ export class TypeFormComponent implements OnInit {
       this.id = this.data.id;
     }
   }
+
  // preenche formulário
   fillFormType(type: TypeModel) {
     this.formType.patchValue({

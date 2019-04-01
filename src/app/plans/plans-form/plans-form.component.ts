@@ -85,13 +85,16 @@ export class PlansFormComponent implements OnInit {
       idAccountable: this.planService.getUserId(this.allUsers, this.formPlan.value.idAccountable),
       start: this.formPlan.value.start == null ? null : String(this.formPlan.value.start),
       end: this.formPlan.value.end == null ? null : String(this.formPlan.value.end),
-      status: 'Aguardando início',
-      idBelongsTo: this.formPlan.value.idBelongsTo == null ? 0 : this.formPlan.value.idBelongsTo
+      status: 'Aguardando início'
+      /*  idBelongsTo: this.formPlan.value.idBelongsTo == null ||
+      this.formPlan.value.idBelongsTo === '' ? 0 : this.formPlan.value.idBelongsTo */
     });
-    if ( this.data.mode === 'new') {
-      if (this.formPlan.valid) {
+    if (this.formPlan.valid) {
+      // verifica o modo da botom sheet e faz a requisição na api
+      if (this.data.mode === 'new') {
         this.apiConnection.createPlan(valueSubmit).subscribe(data => {
           if (data) {
+            this.planService.getForList();
             this.modalRef = this.dialog.open(ModalComponent, {
               data: {
                 message: 'Plano inserido com sucesso!',
@@ -109,11 +112,10 @@ export class PlansFormComponent implements OnInit {
             });
           }
         });
-      }
-    } else if ( this.data.mode === 'edit') {
-      if (this.formPlan.value) {
-        this.apiConnection.updatePlan(valueSubmit, this.id).subscribe( data => {
+      } else if (this.data.mode === 'edit') {
+        this.apiConnection.updatePlan(valueSubmit, this.id).subscribe(data => {
           if (data) {
+            this.planService.getForList();
             this.modalRef = this.dialog.open(ModalComponent, {
               data: {
                 message: 'Plano alterado com sucesso!',
@@ -132,7 +134,6 @@ export class PlansFormComponent implements OnInit {
       }
     }
   }
-
   openDialog() {
     this.dialogRef = this.dialog.open(TypeFormComponent);
   }
@@ -152,11 +153,13 @@ export class PlansFormComponent implements OnInit {
   }
 
   fillFormPlan(plan: PlanModel) {
+    const belongsTo = this.allPlans.filter(p => p.id === plan.idBelongsTo);
+    const accountable = this.allUsers.filter(u => u.id === plan.idAccountable)[0].name;
     plan = Object.assign(plan, {
       idAccountable: this.allUsers.filter(u => u.id === plan.idAccountable)[0].name,
       start: new Date(plan.start),
       end: new Date(plan.end),
-      idBelongsTo: this.allPlans.filter(p => p.idBelongsTo === plan.idBelongsTo)[0].name
+      idBelongsTo: belongsTo.length !== 0 ? belongsTo[0].name : plan.idBelongsTo
     });
 
     this.formPlan.patchValue(plan);
