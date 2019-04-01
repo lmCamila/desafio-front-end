@@ -2,17 +2,20 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app.routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { MenuModule } from './menu/menu.module';
 import { PlansModule } from './plans/plans.module';
 import { TypeModule } from './type/type.module';
+import { FooterComponent } from './footer/footer.component';
+import { AppRoutingModule } from './app.routing.module';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

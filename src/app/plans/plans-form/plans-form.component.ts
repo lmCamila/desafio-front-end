@@ -1,13 +1,14 @@
+
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material';
 
+import { TypeFormComponent } from 'src/app/type/type-form/type-form.component';
 import { ApiService } from '../../core/shared/api.service';
 import { ModalComponent } from 'src/app/core/modal/modal.component';
 import { PlansService } from './../shared/plans.service';
 import { PlanModel } from './../shared/plan-model';
 import { TypeModel } from '../../type/shared/type-model';
-import { TypeFormComponent } from 'src/app/type/type-form/type-form.component';
 import { UserModel } from '../shared/user-model';
 
 @Component({
@@ -85,9 +86,9 @@ export class PlansFormComponent implements OnInit {
       idAccountable: this.planService.getUserId(this.allUsers, this.formPlan.value.idAccountable),
       start: this.formPlan.value.start == null ? null : String(this.formPlan.value.start),
       end: this.formPlan.value.end == null ? null : String(this.formPlan.value.end),
-      status: 'Aguardando início'
-      /*  idBelongsTo: this.formPlan.value.idBelongsTo == null ||
-      this.formPlan.value.idBelongsTo === '' ? 0 : this.formPlan.value.idBelongsTo */
+      status: 'Aguardando início',
+      idBelongsTo: this.formPlan.value.idBelongsTo !== null ?
+        this.allPlans.filter( p => p.name === this.formPlan.value.idBelongsTo)[0].id : null
     });
     if (this.formPlan.valid) {
       // verifica o modo da botom sheet e faz a requisição na api
@@ -122,6 +123,7 @@ export class PlansFormComponent implements OnInit {
                 cancel: false
               }
             });
+            this.bottomSheetRef.dismiss();
           } else {
             this.modalRef = this.dialog.open(ModalComponent, {
               data: {
