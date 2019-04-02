@@ -4,26 +4,28 @@
     <mat-card-actions>
       <mat-divider style="margin-top:8%"></mat-divider>
       <app-plans-add-button></app-plans-add-button>
-      <button mat-icon-button matTooltip="Filtrar por:" (click)="showFilterOptions()" class="button-filter"><mat-icon>filter_list</mat-icon></button>
-    <div *ngIf="showFilter" style="width: 90%; position: absolute; right:5%; top:15%" >
-      <mat-chip-list>
-        <mat-chip mat-menu-item (click)="filterList('todos')" >Todos</mat-chip>
-        <mat-chip mat-menu-item (click)="filterList('iniciados')" >Iniciados</mat-chip>
-        <mat-chip mat-menu-item (click)="filterList('concluidos')" >Concluídos</mat-chip>
-        <mat-chip mat-menu-item (click)="filterList('aguardando')" >Aguardando</mat-chip>
-        <mat-chip mat-menu-item (click)="filterList('suspensos')" >Suspensos</mat-chip>
-        <mat-chip mat-menu-item (click)="filterList('cancelados')" >Cancelados</mat-chip>
-        <mat-chip mat-menu-item (click)="filterList('meus planos')" >Meus Planos</mat-chip>
-      </mat-chip-list>
-    </div>
+      <button mat-icon-button matTooltip="Filtrar por:" (click)="showFilterOptions()" class="button-filter">
+        <mat-icon>filter_list</mat-icon>
+      </button>
+      <div *ngIf="showFilter" id="filter-list">
+        <mat-chip-list>
+          <mat-chip mat-menu-item (click)="filterList('todos')">Todos</mat-chip>
+          <mat-chip mat-menu-item (click)="filterList('iniciados')">Iniciados</mat-chip>
+          <mat-chip mat-menu-item (click)="filterList('concluidos')">Concluídos</mat-chip>
+          <mat-chip mat-menu-item (click)="filterList('aguardando')">Aguardando</mat-chip>
+          <mat-chip mat-menu-item (click)="filterList('suspensos')">Suspensos</mat-chip>
+          <mat-chip mat-menu-item (click)="filterList('cancelados')">Cancelados</mat-chip>
+          <mat-chip mat-menu-item (click)="filterList('meus planos')">Meus Planos</mat-chip>
+        </mat-chip-list>
+      </div>
     </mat-card-actions>
   </mat-card-header>
-  <mat-card-content style="margin-top: 10%">     
-    <div *ngIf="plans" cdkDropList [cdkDropListData]="plans" (cdkDropListDropped)="plansDragAndDrop.drop($event)" class="list">
+  <mat-card-content style="margin-top: 10%">
+    <div *ngIf="plans" cdkDropList [cdkDropListData]="plans" (cdkDropListDropped)="plansDragAndDrop.drop($event)"
+      class="list">
       <div *ngFor="let p of plans" cdkDrag class="box">
         <app-plans [plan]=p></app-plans>
       </div>
     </div>
   </mat-card-content>
 </mat-card>
-<!-- <app-footer></app-footer> -->

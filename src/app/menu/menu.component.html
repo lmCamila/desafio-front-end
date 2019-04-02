@@ -7,12 +7,19 @@
   </mat-toolbar>
 
   <mat-sidenav-container class="menu-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="true"
       fixedTopGap="56">
-      <mat-nav-list style="width: 240px; margin-top:17%;padding-top:17% ;">
-        <a mat-list-item routerLinkActive="selected-item" [routerLinkActiveOptions]="{exact: true}" routerLink="">Visão Geral</a>
-        <a mat-list-item routerLinkActive="selected-item" routerLink="/planner">Planos</a>
-        <a mat-list-item routerLinkActive="selected-item" routerLink="/type">Tipos de Planos</a>
+      <mat-nav-list style="width: 200px;">
+        <a 
+        class="item"
+        mat-list-item 
+        routerLinkActive="selected-item" 
+        [routerLinkActiveOptions]="{exact: true}" 
+        routerLink="">
+          Visão Geral
+        </a>
+        <a class="item" mat-list-item routerLinkActive="selected-item" routerLink="/planner">Planos</a>
+        <a class="item" mat-list-item routerLinkActive="selected-item" routerLink="/type">Tipos</a>
       </mat-nav-list>
     </mat-sidenav>
   </mat-sidenav-container>

@@ -1,6 +1,14 @@
 .button-filter{
     position: absolute;
-    float: right;
+    float: right; 
     right:2%;
-    top:14% !important;
+    margin-top:11% !important;
+}
+
+#filter-list{
+    width: 90%;
+    position: absolute;
+    float: right;
+    right:6%;
+    margin-top:11% !important; 
 }

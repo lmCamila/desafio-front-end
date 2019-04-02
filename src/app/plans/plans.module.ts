@@ -15,6 +15,7 @@ import { PlanContentComponent } from './plan-content/plan-content.component';
 import { PlansFormComponent } from './plans-form/plans-form.component';
 import { PlansListComponent } from './plans-list/plans-list.component';
 import { PlanRoutingModule } from './plans.routing.module';
+import { CoreModule } from '../core/core.module';
 
 registerLocaleData(ptBr);
 
@@ -33,6 +34,7 @@ registerLocaleData(ptBr);
     HttpClientModule,
     ReactiveFormsModule,
     MatNativeDateModule,
+    CoreModule,
     FormsModule
   ],
   exports: [

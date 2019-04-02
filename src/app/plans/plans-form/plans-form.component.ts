@@ -51,16 +51,13 @@ export class PlansFormComponent implements OnInit {
   }
 
   ngOnInit() {
-
     // pegar types do json server
     this.apiConnection.getTypes().subscribe(data => this.types = data);
-
     // pegar users do json serve, salvando em duas listas para fazer uma filtragem
     this.apiConnection.getUsers().subscribe(data => {
       this.users = data;
       this.allUsers = data;
     });
-
     // pegar planos do json server - usa duas listas para fazer filtragem
     this.apiConnection.getPlans().subscribe(data => {
       this.plans = data;
@@ -136,6 +133,7 @@ export class PlansFormComponent implements OnInit {
       }
     }
   }
+
   openDialog() {
     this.dialogRef = this.dialog.open(TypeFormComponent);
   }
