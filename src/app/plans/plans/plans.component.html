@@ -1,14 +1,18 @@
 <div *ngIf="subPlans.length === 0 || subPlans == null">
-  <div>
-    <div style="width:100%">
-      <app-plan-content [plan]=plan></app-plan-content>
-      
+  <div cdkDropList [cdkDropListData]="subPlans" (cdkDropListDropped)="drop($event)" [id]='plan.id'
+    [cdkDropListConnectedTo]='connectedLists' [cdkDropListEnterPredicate]="canDropPredicate()">
+    <div cdkDrag>
+      <div style="width:100%">
+        <app-plan-content [plan]=plan></app-plan-content>
+
+      </div>
     </div>
   </div>
+
 </div>
 
 <div>
- <!--  <mat-tree>
+  <!--  <mat-tree>
     <mat-nested-tree-node>
       <app-plan-content [plan]=plan></app-plan-content>
       <div cdkDropList class="list" [cdkDropListData]="subPlans" (cdkDropListDropped)="plansDragAndDrop.drop($event)">
@@ -21,11 +25,12 @@
   <mat-accordion *ngIf="subPlans.length != 0">
     <mat-expansion-panel style="width:100% !important; height: 100%; padding: 2%">
       <mat-expansion-panel-header style="max-width: 100% !important;padding: 2%">
-          <app-plan-content [plan]=plan></app-plan-content>
+        <app-plan-content [plan]=plan></app-plan-content>
       </mat-expansion-panel-header>
-      <div cdkDropList class="list" [cdkDropListData]="subPlans" (cdkDropListDropped)="plansDragAndDrop.drop($event)">
-        <div *ngFor="let p of subPlans" cdkDrag class="box">
-          <app-plan-content [plan]=p></app-plan-content>
+      <div cdkDropList [cdkDropListData]="subPlans" (cdkDropListDropped)="drop($event)" [id]='plan.id'
+        [cdkDropListConnectedTo]='connectedLists' [cdkDropListEnterPredicate]="canDropPredicate()">
+        <div *ngFor="let p of subPlans" class="box">
+          <app-plans cdkDrag [plan]=p [connectedLists]='connectedLists'></app-plans>
         </div>
       </div>
     </mat-expansion-panel>

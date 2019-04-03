@@ -21,10 +21,12 @@
     </mat-card-actions>
   </mat-card-header>
   <mat-card-content style="margin-top: 10%">
-    <div *ngIf="plans" cdkDropList [cdkDropListData]="plans" (cdkDropListDropped)="plansDragAndDrop.drop($event)"
-      class="list">
+    <div *ngIf="plans" cdkDropList #rootList="cdkDropList" 
+    [cdkDropListData]="plans" (cdkDropListDropped)="drop($event)" id='root' 
+    [cdkDropListConnectedTo]='connectedLists' [cdkDropListEnterPredicate]="canDropPredicate()"
+    class="list">
       <div *ngFor="let p of plans" cdkDrag class="box">
-        <app-plans [plan]=p></app-plans>
+        <app-plans  [plan]=p [connectedLists]='connectedLists'></app-plans>
       </div>
     </div>
   </mat-card-content>

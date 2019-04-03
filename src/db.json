@@ -136,25 +136,8 @@
       "description": "",
       "interestedPeople": [],
       "costs": null,
-      "status": "Iniciado",
+      "status": "Suspenso",
       "id": 56
-    },
-    {
-      "name": "aaaaa",
-      "idType": 1,
-      "idAccountable": 2,
-      "start": "Wed Dec 31 1969 21:00:00 GMT-0300 (Horário Padrão de Brasília)",
-      "end": "Wed Dec 31 1969 21:00:00 GMT-0300 (Horário Padrão de Brasília)",
-      "idBelongsTo": 3,
-      "description": null,
-      "interestedPeople": [
-        4,
-        5,
-        6
-      ],
-      "costs": null,
-      "status": "Aguardando início",
-      "id": 59
     },
     {
       "name": "Plano de Crescimento dos lucros no mês de abril",
@@ -166,7 +149,7 @@
       "description": null,
       "interestedPeople": null,
       "costs": null,
-      "status": "Aguardando início",
+      "status": "Concluído",
       "id": 60
     },
     {
@@ -192,7 +175,7 @@
       "description": null,
       "interestedPeople": null,
       "costs": null,
-      "status": "Aguardando início",
+      "status": "Cancelado",
       "id": 62
     },
     {
@@ -229,11 +212,6 @@
       "description": "Plano estratégico"
     },
     {
-      "name": "Plano de Expansão",
-      "description": "Plano de Crescimento",
-      "id": 2
-    },
-    {
       "id": 3,
       "name": "Plano de Reestruturação",
       "description": "Plano de Reestruturação"
@@ -252,11 +230,6 @@
       "name": "Plano de Crescimento/ Expansão",
       "description": "Plano de Crescimento",
       "id": 6
-    },
-    {
-      "name": "Plano de Crescimento",
-      "description": "Plano de Crescimento",
-      "id": 7
     }
   ]
 }
