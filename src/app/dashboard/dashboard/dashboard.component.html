@@ -1,4 +1,10 @@
-<mat-card style="max-width: 900px; margin-top:5%;margin-left: 20%; display: flex; justify-content: center">
-  <fusioncharts width="700" height="400" type="Column2d" [dataSource]="dataSource">
-  </fusioncharts>
+<mat-card class="card-list">
+  <div *ngIf="chart" >
+    <google-chart #chart [title]="title" [type]="type" [data]="data" [columnNames]="columnNames" [options]="options"
+    [width]="width" [height]="height">
+  </google-chart>
+  </div>
+  <div *ngIf="!chart" style="display: grid; justify-items: center">
+    <mat-spinner></mat-spinner>
+  </div>
 </mat-card>

@@ -1,58 +1,151 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-body{
-    background-color: #E6E6E6;
+body {
+  background-color: #E6E6E6;
 }
-.card-list{
-    margin-top: 6%;
-    max-width: 50%;
-    margin-left: 30%;
+.container{
+  min-height: calc(100vh - 70px);
+  display: grid;
 }
-
-.list{
-    width:100%;
-    display:block;
-    border-radius:10px;
-    background: white;
-    overflow: hidden;
+.card-list {
+  margin: 65px 25% 0% 25%;
+  min-width: 30%;
+  max-width: 50%;
 }
 
-.box{
-    padding: 20px 10px;
-    width:100%;
-    border-bottom: solid 1px #E8E8E8;
-    color:rgba(0,0,0,0.87);
-    box-sizing: border-box;
-    cursor: move;
-    background: white;
+.list {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+  background: white;
+  overflow: hidden;
+}
+
+.box {
+  padding: 20px 10px;
+  width: 100%;
+  border-bottom: solid 1px #E8E8E8;
+  color: rgba(0, 0, 0, 0.87);
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
 }
 
 .cdk-drag-preview {
-    box-sizing: border-box;
-    border-radius: 4px;
-    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-                0 8px 10px 1px rgba(0, 0, 0, 0.14),
-                0 3px 14px 2px rgba(0, 0, 0, 0.12);
-  }
-  
-  .cdk-drag-animating {
-    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-  }
-
-  .list.cdk-drop-list-dragging .box:not(.cdk-drag-placeholder) {
-    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-  }
-
-  .img-avatar{
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    margin-left: 3%;
-  }
-
-  
-.left p, h3 {
-    margin:0%;
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.list.cdk-drop-list-dragging .box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.img-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-left: 3%;
+}
+
+.left p, h3 {
+  margin: 0%;
+}
+
 .right p {
-    margin: 0%;
+  margin: 0%;
+}
+
+#button-new {
+  float: left;
+  position: absolute;
+  background: rgb(58, 191, 214);
+  top: 17.5%;
+  left: .5%;
+  z-index: 3;
+}
+
+input {
+  padding-top: 10%;
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.menu-is-mobile .menu-toolbar {
+  position: fixed;
+  height: 7% !important;
+  z-index: 2;
+}
+
+.menu-toolbar {
+  position: fixed;
+  height: 7% !important;
+  z-index: 2;
+  background-color: rgb(27, 117, 187);
+}
+
+h1.menu-app-name {
+  margin-left: 8px;
+}
+
+.menu-is-mobile .menu-sidenav-container {
+  flex: 1 0 auto;
+  width: 3%;
+}
+
+.menu-sidenav-container {
+  flex: 1 0 auto;
+  background-color: #E6E6E6;
+  width: 250px;
+}
+
+.item {
+  border-left: 5px solid rgba(110, 108, 108, 0.274);
+  padding-right: 30%;
+}
+
+.selected-item {
+  border-left: 4px solid royalblue;
+  border-radius: 2%;
+  background: rgba(123, 183, 211, 0.322) !important;
+}
+
+.footer {
+  margin-top: calc(100% - 1%);
+  clear: both;
+  position: relative;
+  bottom: 0;
+  width: 50%;
+  margin-top: 2%;
+  margin-left: 25%;
+  display: grid;
+}
+
+.footer-plan {
+  border-top: 3px solid deepskyblue;
+  width: 140px;
+  font-size: 7pt;
+  margin: -.5px 0px 0px -10px;
+  justify-content: start;
+  z-index: 1;
+}
+
+.footer-forlogic {
+  border-top: 3px solid darkblue;
+  width: 140px;
+  font-size: 7pt;
+  margin-top: -.5px;
+  justify-content: start;
+  z-index: 2;
 }

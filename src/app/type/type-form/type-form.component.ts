@@ -1,11 +1,18 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { FormBuilder, FormGroup, Validators, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+import { MatDialogRef, MatDialog, MAT_DIALOG_DATA, ErrorStateMatcher } from '@angular/material';
 
 import { ApiService } from '../../core/shared/api.service';
 import { TypeService } from '../shared/type.service';
 import { ModalComponent } from 'src/app/core/modal/modal.component';
 import { TypeModel } from '../shared/type-model';
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
 
 @Component({
   selector: 'app-type-form',
@@ -18,6 +25,7 @@ export class TypeFormComponent implements OnInit {
   modalRef: MatDialogRef<ModalComponent>;
   title = 'Cadastrar';
   id: number;
+  matcher = new MyErrorStateMatcher();
 
   constructor(private api: ApiService,
               public dialogRef: MatDialogRef<TypeFormComponent>,
@@ -27,8 +35,7 @@ export class TypeFormComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) public data: any) {
 
     this.formType = this.formBuilder.group({
-      name: [null, [Validators.required]],
-      description: [null]
+      name: [null, [Validators.required]]
     });
   }
 

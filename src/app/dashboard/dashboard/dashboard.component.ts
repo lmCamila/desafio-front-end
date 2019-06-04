@@ -1,5 +1,6 @@
 import { ApiService } from './../../core/shared/api.service';
 import { Component, OnInit } from '@angular/core';
+import { concat } from 'rxjs/operators';
 
 interface Data {
   name: string;
@@ -13,52 +14,44 @@ interface Data {
 })
 
 export class DashboardComponent implements OnInit {
+  chart = false;
+  title = 'Meus Planos';
+  type = 'PieChart';
+  data: any;
+  columnNames: any;
+  options: any;
+  width = '500';
+  height = '320';
   iniciados: number;
   cancelados: number;
   aguardando: number;
   concluidos: number;
   suspensos: number;
-
-  dataSource: any;
   chartConfig: any;
 
   constructor(private api: ApiService) {
-    this.chartConfig = {
-      width: '700',
-      height: '400',
-      type: 'column2d',
-      dataFormat: 'json',
-    };
   }
 
   ngOnInit() {
-    this.api.getPlans().subscribe(data => {
-      this.dataSource = {
-          chart  : {
-          caption: 'Planos',
-          subCaption: 'Dados referentes aos status planos',
-          xAxisName: 'Status dos Planos',
-          yAxisName: 'Número de Planos',
-          numberSuffix: '',
-          theme: 'gammel',
-        },
-        data: [{
-          label: 'Iniciados',
-          value: data.filter(p => p.status === 'Iniciado').length
-        }, {
-          label: 'Cancelados',
-          value: data.filter(p => p.status === 'Cancelado').length
-        }, {
-          label: 'Aguardando',
-          value: data.filter(p => p.status === 'Aguardando início').length
-        }, {
-          label: 'Suspensos',
-          value: data.filter(p => p.status === 'Suspenso').length
-        }, {
-          label: 'Concluídos',
-          value: data.filter(p => p.status === 'Concluído').length
-        }]
+    this.api.getPlans().subscribe(result => {
+      this.iniciados = result.filter(p => p.status === 'Iniciado').length;
+      this.cancelados = result.filter(p => p.status === 'Cancelado').length;
+      this.aguardando = result.filter(p => p.status === 'Aguardando início').length;
+      this.suspensos = result.filter(p => p.status === 'Suspenso').length;
+      this.concluidos = result.filter(p => p.status === 'Concluído').length;
+      this.data = [
+        [ 'Iniciados', this.iniciados],
+        ['Cancelados', this.cancelados],
+        [ 'Aguardando Inicio', this.aguardando],
+        [ 'Suspenso', this.suspensos],
+        [ 'Concluído', this.concluidos],
+      ];
+      this.columnNames = ['Planos', 'Quantidade de planos'];
+      this.options = {
+        colors: ['#e0440e', '#DF0101', '#0174DF', '#FFFF00', '#298A08'],
+        is3D: true
       };
+      this.chart = true;
     });
   }
 }

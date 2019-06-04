@@ -1,25 +1,15 @@
-import { FusionChartsModule } from 'angular-fusioncharts';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DemoMaterialModule } from './../material-module';
-
-// Load FusionCharts
-import * as FusionCharts from 'fusioncharts';
-// Load Charts module
-import * as Charts from 'fusioncharts/fusioncharts.charts';
-// Load fusion theme
-import * as FusionTheme from 'fusioncharts/themes/fusioncharts.theme.gammel';
-
-// Add dependencies to FusionChartsModule
-FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
+import { GoogleChartsModule } from 'angular-google-charts';
 
 @NgModule({
   declarations: [DashboardComponent ],
   imports: [
     CommonModule,
     DemoMaterialModule,
-    FusionChartsModule
+    GoogleChartsModule
   ],
   entryComponents: [DashboardComponent ]
 })

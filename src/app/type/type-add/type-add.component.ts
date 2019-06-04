@@ -16,6 +16,8 @@ export class TypeAddComponent implements OnInit {
 
   openDialog() {
     this.dialogRef = this.dialog.open(TypeFormComponent, {
+      width: '40%',
+      height: '30%',
       data: {
         mode: 'new'
       }

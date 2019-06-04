@@ -1,23 +1,22 @@
-<div style="display: flex; flex-direction:column">
+<div style="display: grid; margin-top: -5%;">
   <form [formGroup]="formType" (ngSubmit)="onSubmit()">
-    <div style="display:inline">
-      <button type="button" mat-icon-button matTooltip="Cancelar" style="position:relative; float:left; margin-right: 2%"
-      (click)="close()">
+    <div mat-dialog-actions style="display: grid; grid-template-columns: 5% auto 5%;grid-gap:10px">
+      <button mat-icon-button type="button" matTooltip="Cancelar" (click)="close()" style="justify-self: start">
         <mat-icon>close</mat-icon>
       </button>
-      <h1 mat-dialog-title style="position:relative; float:left;">{{ title }} Tipo</h1>
-    </div>
-    <div mat-dialog-content>
-      <button mat-icon-button type="submit" matTooltip="Confirmar" style="position:relative; float:right">
+      <h1 mat-dialog-title style="margin: 5%; justify-self: start">{{ title }} Tipo</h1>
+      <button mat-icon-button type="submit" matTooltip="Confirmar" style="justify-self: end">
         <mat-icon>done</mat-icon>
       </button>
     </div>
-    <mat-divider style="margin-top:5%"></mat-divider>
-    <mat-form-field style="width:100%; margin-top:4%;">
-      <input matInput formControlName="name" placeholder="Nome">
-    </mat-form-field>
-    <mat-form-field style="width:100%">
-      <textarea matInput formControlName="description" placeholder="Descrição"></textarea>
-    </mat-form-field>
+    <mat-divider style="margin: 5% -2% 5% -2%"></mat-divider>
+    <div>
+      <mat-form-field style="width: 100%">
+        <input matInput formControlName="name" placeholder="Nome"  [errorStateMatcher]="matcher">
+        <mat-error *ngIf="!formType.get('name').valid">
+            Nome do tipo é <strong>obrigatório</strong>.
+        </mat-error>
+      </mat-form-field>
+    </div>
   </form>
 </div>
