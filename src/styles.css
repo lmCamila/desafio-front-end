@@ -2,16 +2,29 @@
 body {
   background-color: #E6E6E6;
 }
-.container{
+
+.container {
   min-height: calc(100vh - 70px);
   display: grid;
 }
+
 .card-list {
   margin: 65px 25% 0% 25%;
   min-width: 30%;
   max-width: 50%;
 }
 
+.mini-card {
+  min-width: 25%;
+  max-width: 25%;
+  border-left: 2px outset ;
+  text-align: center;
+  margin: 1%;
+}
+
+.mini-card p {
+  font-size: 2em;
+}
 .list {
   width: 100%;
   display: block;
@@ -19,7 +32,15 @@ body {
   background: white;
   overflow: hidden;
 }
-
+.scoreboard{
+  display: flex; 
+  width: 100%;
+  grid-template-columns: repeat(3,2fr); 
+  grid-template-rows: repeat(2,2fr); 
+  grid-gap: 2em; 
+  justify-content: center;
+  flex-wrap: wrap;
+}
 .box {
   padding: 20px 10px;
   width: 100%;

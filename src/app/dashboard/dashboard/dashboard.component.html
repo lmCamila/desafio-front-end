@@ -1,10 +1,59 @@
-<mat-card class="card-list">
-  <div *ngIf="chart" >
-    <google-chart #chart [title]="title" [type]="type" [data]="data" [columnNames]="columnNames" [options]="options"
-    [width]="width" [height]="height">
-  </google-chart>
-  </div>
-  <div *ngIf="!chart" style="display: grid; justify-items: center">
-    <mat-spinner></mat-spinner>
-  </div>
-</mat-card>
+<div style="margin: 5% 25% 2% 25%; width: 50%">
+  <mat-accordion style="max-width: 50%; min-width: 40%;">
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
+      <mat-expansion-panel-header>
+        <mat-panel-title>Placar de planos</mat-panel-title>
+        <mat-panel-description>Mostra a quantidade de planos em cada status</mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="scoreboard">
+        <mat-card class="mini-card" [style.border-color]="colorIni">
+          <mat-card-content>
+            <p>Iniciados</p>
+            <p>{{iniciados}}</p>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="mini-card" [style.border-color]="colorCan">
+          <mat-card-content>
+            <p>Cancelados</p>
+            <p>{{cancelados}}</p>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="mini-card" [style.border-color]="colorAg">
+          <mat-card-content>
+            <p>Aguardando Inicio</p>
+            <p>{{aguardando}}</p>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="mini-card" [style.border-color]="colorCon">
+          <mat-card-content>
+            <p>Concluídos</p>
+            <p>{{concluidos}}</p>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="mini-card" [style.border-color]="colorSus">
+          <mat-card-content>
+            <p>Suspensos</p>
+            <p>{{suspensos}}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
+        <mat-expansion-panel-header>
+            <mat-panel-title>Grafico de planos</mat-panel-title>
+            <mat-panel-description>Mostra um gráfico com meus planos em seus status</mat-panel-description>
+          </mat-expansion-panel-header>
+      <div *ngIf="chart">
+        <google-chart #chart [title]="title" [type]="type" [data]="data" [columnNames]="columnNames" [options]="options"
+          [width]="width" [height]="height">
+        </google-chart>
+      </div>
+      <div *ngIf="!chart" style="display: grid; justify-items: center; margin: 5% 0% 5% 0%">
+        <mat-spinner></mat-spinner>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+</div>
+
+

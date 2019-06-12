@@ -20,15 +20,33 @@ export class DashboardComponent implements OnInit {
   data: any;
   columnNames: any;
   options: any;
-  width = '500';
-  height = '320';
+  width = '600';
+  height = '500';
   iniciados: number;
   cancelados: number;
   aguardando: number;
   concluidos: number;
   suspensos: number;
   chartConfig: any;
+  colorIni = '#2980B9';
+  colorCan = '#EC7063';
+  colorAg = '#5499C7';
+  colorSus = '#F8C471';
+  colorCon = '#58D68D';
 
+  step = 0;
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
+  }
   constructor(private api: ApiService) {
   }
 
@@ -48,7 +66,7 @@ export class DashboardComponent implements OnInit {
       ];
       this.columnNames = ['Planos', 'Quantidade de planos'];
       this.options = {
-        colors: ['#e0440e', '#DF0101', '#0174DF', '#FFFF00', '#298A08'],
+        colors: [this.colorIni, this.colorCan, this.colorAg, this.colorSus, this.colorCon],
         is3D: true
       };
       this.chart = true;
